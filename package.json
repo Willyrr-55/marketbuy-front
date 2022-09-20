@@ -21,8 +21,13 @@
     "@angular/platform-browser": "^14.2.2",
     "@angular/platform-browser-dynamic": "^14.2.2",
     "@angular/router": "^14.2.2",
+    "@auth0/angular-jwt": "^5.0.2",
     "angular-ng-autocomplete": "^2.0.8",
+    "ngx-permissions": "^13.0.1",
+    "ngx-spinner": "^13.1.1",
+    "ngx-toastr": "^14.3.0",
     "rxjs": "~7.5.0",
+    "sweetalert2": "^11.4.8",
     "swiper": "^8.4.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

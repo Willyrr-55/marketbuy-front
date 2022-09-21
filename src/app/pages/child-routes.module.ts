@@ -4,13 +4,18 @@ import { NgxPermissionsGuard } from 'ngx-permissions';
 
 const routes:Routes =[
   {
+    path:'home',
+    pathMatch:'full',
+    redirectTo:''
+  },
+  {
     path:'',
     data: {
       title: 'Inicio',
       breadcrumb: [
         {
           label: 'Inicio',
-          url: '/home'
+          url: '/'
         }
       ]
     },
@@ -64,8 +69,8 @@ const routes:Routes =[
   // },
   {
     path:'**',
-    redirectTo:'/home',
-    pathMatch:'full'
+    redirectTo:'/',
+    // pathMatch:'full'
   }
 ]
 

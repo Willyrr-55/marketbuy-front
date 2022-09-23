@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +11,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { JwtInterceptor } from '@auth0/angular-jwt';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { JwtModule } from '@auth0/angular-jwt';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxPermissionsModule } from 'ngx-permissions';
+import localEs from '@angular/common/locales/es-US';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(localEs);
 
 @NgModule({
   declarations: [
@@ -22,11 +28,18 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
+    JwtModule.forRoot({config:{}}),
+    ToastrModule.forRoot({}),
+    NgxPermissionsModule.forRoot(),
     SharedModule,
     PagesModule,
     FlexLayoutModule
   ],
   providers: [
+    {
+      provide:LOCALE_ID,
+      useValue:'es-US'
+    },
     {
       provide:HTTP_INTERCEPTORS,
       useClass:JwtInterceptor,

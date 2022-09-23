@@ -8,7 +8,6 @@ import { NgxRolesService } from 'ngx-permissions';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-// import { ModalsService } from '../services/modals.service';
 import { AlertsService } from '../services/alerts.service';
 // import { ModalsService } from '../services/modals.service';
 import { ToastrService } from 'ngx-toastr';

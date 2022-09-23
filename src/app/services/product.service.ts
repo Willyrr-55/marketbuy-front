@@ -17,4 +17,8 @@ export class ProductService {
     return this.httpClient.get<any>(`${baseurlapi}/searchProducts`,{params:{search,page,filters:JSON.stringify(filters)}});
   }
 
+  getProducts(){
+    return this.httpClient.get(`${baseurlapi}/getProducts`);
+  }
+
 }

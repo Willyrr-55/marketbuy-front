@@ -18,9 +18,11 @@ export class JwtInterceptor implements HttpInterceptor {
 
   constructor(
     // private alertsService: AlertsService,
-     private authService: AuthService) {}
+     private authService: AuthService) {
+     }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
     if(this.authService.getToken()){
       request = this.setToken(request,this.authService.getToken());
     }

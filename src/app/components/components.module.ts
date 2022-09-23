@@ -28,7 +28,9 @@ const components = [
     MatCardModule,
     AutocompleteLibModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
+
   ],
   exports:[
     components

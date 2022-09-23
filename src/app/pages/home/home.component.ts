@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductI } from 'src/app/interfaces/product.interface';
+import { ProductService } from 'src/app/services/product.service';
 import SwiperCore from 'swiper';
 
 @Component({
@@ -8,16 +10,30 @@ import SwiperCore from 'swiper';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  products:ProductI[];
+
+  constructor(
+    private productService: ProductService
+  ) { }
 
   ngOnInit(): void {
+    this.getProducts()
   }
 
-  onSwiper([swiper]) {
-    console.log(swiper);
-  }
-  onSlideChange() {
-    console.log('slide change');
+  // onSwiper([swiper]) {
+  //   console.log(swiper);
+  // }
+  // onSlideChange() {
+  //   console.log('slide change');
+  // }
+
+  getProducts(){
+    console.log('Realizando consulta')
+    this.productService.getProducts().subscribe({
+      next:(res:any)=>{
+        console.log(res)
+      }
+    })
   }
 
 }

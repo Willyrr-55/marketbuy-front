@@ -6,6 +6,8 @@ import { HomeComponent } from './home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SwiperModule } from 'swiper/angular';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { MaterialModule } from 'src/app/material/material.module';
+import { ModalsModule } from 'src/app/modals/modals.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ComponentsModule } from 'src/app/components/components.module';
   imports: [
     CommonModule,
     HomeRoutingModule,
+    MaterialModule,
     FlexLayoutModule,
+    ModalsModule,
     SwiperModule,
     ComponentsModule
 

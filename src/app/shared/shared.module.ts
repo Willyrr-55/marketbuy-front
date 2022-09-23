@@ -6,6 +6,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
+import { ComponentsModule } from '../components/components.module';
 
 
 @NgModule({
@@ -18,8 +19,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatToolbarModule,
     MatIconModule,
     MatSliderModule,
-    MatButtonModule
-
+    MatButtonModule,
+    ComponentsModule
   ],
   exports:[
     FooterComponent,

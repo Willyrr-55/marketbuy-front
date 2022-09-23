@@ -1,0 +1,29 @@
+<div class="ng-autocomplete w-100" [ngClass]="classes">
+  <form autocomplete="off">
+    <ng-autocomplete
+      #searchInputComponent
+      [(ngModel)]="searchInput"
+      [ngModelOptions]="{standalone: true}"
+      (keyup.enter)="search()"
+      style="font-size: 16px;"
+      [debounceTime]="500"
+      historyIdentifier="items"
+      (selected)="selected($event)"
+      (inputCleared)="changeValue('')"
+      (inputChanged)="changeValue($event)"
+      [placeholder]="placeholder"
+      [customFilter]="customFilter"
+      [data]="products"
+      [searchKeyword]="keyboard"
+      [itemTemplate]="itemTemplate">
+      </ng-autocomplete>
+      <ng-template #itemTemplate let-item>
+        <div class="item-search">
+          <ng-container *ngIf="item.photos.length>0">
+            <img [src]="item.photos[0].location" [alt]="item.name">
+          </ng-container>
+          <span [innerHTML]="item.name"></span>
+        </div>
+      </ng-template>
+  </form>
+</div>

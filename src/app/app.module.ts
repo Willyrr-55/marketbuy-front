@@ -7,8 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SharedModule } from './shared/shared.module';
 import { PagesModule } from './pages/pages.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from '@auth0/angular-jwt';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { JwtInterceptor } from '@auth0/angular-jwt';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,

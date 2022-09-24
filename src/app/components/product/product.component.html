@@ -3,15 +3,17 @@
     <i class="bx bx-shopping-bag"></i>
   </div>
   <div class="main-images">
-    <img id="blue" class="blue active" src="assets/product.png" alt="blue" />
+    <img id="blue" class="blue active" [src]="product.photos[2].url" alt="blue" />
   </div>
   <div class="shoe-details">
-    <span class="shoe_name"> Lorem ipsum</span>
+    <span class="shoe_name"> {{product.name}}</span>
     <br />
     <p>
-      Lorem ipsum dolor sit lorenm i amet, consectetur adipisicing elit. Eum,
-      ea, ducimus!
+      {{product.description}}
     </p>
+    <button class="favorite" mat-mini-fab aria-label="Example icon button with a home icon"  (click)="addProductToWishlsit(product._id)">
+      <mat-icon>favorite</mat-icon>
+    </button>
     <div class="stars">
       <i class="bx bxs-star"></i>
       <i class="bx bxs-star"></i>

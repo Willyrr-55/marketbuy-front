@@ -32,12 +32,11 @@
       fxFlex.md="30"
       fxFlex.lg="30"
       fxFlex.sm="30"
-      *ngFor="let book of [2, 2, 3,4,5]"
+      *ngFor="let product of products"
     >
-      <app-product></app-product>
+      <app-product [product]="product"></app-product>
     </div>
   </div>
-
 
   <mat-tab-group>
     <mat-tab label="Inicio">

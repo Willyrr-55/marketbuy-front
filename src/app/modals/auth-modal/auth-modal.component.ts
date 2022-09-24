@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthModalComponent implements OnInit {
 
+  tabSelected:number = 0
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  optionSelected(indexTab:number){
+    this.tabSelected = indexTab;
+  }
+
 
 }

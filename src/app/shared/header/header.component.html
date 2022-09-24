@@ -10,12 +10,24 @@
             [placeholder]="'Buscar productos'"
           ></app-search-input>
     </span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
+
+    <button *ngxPermissionsOnly="['no-auth']" (click)="authModal()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>person</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
+
+    <ng-container *ngxPermissionsExcept="['no-auth']">
+      <ng-container *ngIf="(authService.currentUser$ | async) as user">
+        <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          Hola, {{user.full_name}}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button (click)="authService.logout()" mat-menu-item>
+            <span>Cerrar sesión</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+    </ng-container>
+
   </mat-toolbar>
 
 </header>

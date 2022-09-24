@@ -1,12 +1,13 @@
 <swiper
 [config]="config"
-(swiper)="onSwiper($event)"
-(slideChange)="onSlideChange()"
 >
-<ng-template swiperSlide>Slide 1</ng-template>
-<ng-template swiperSlide>Slide 2</ng-template>
-<ng-template swiperSlide>Slide 3</ng-template>
-<ng-template swiperSlide>Slide 4</ng-template>
-<ng-template swiperSlide>Slide 5</ng-template>
-<ng-template swiperSlide>Slide 6</ng-template>
+<ng-template swiperSlide>
+  <img style="width: 100%;object-fit: cover;" src="/assets/banner1.png" alt="">
+</ng-template>
+<ng-template swiperSlide>
+  <img style="width: 100%;object-fit: cover;" src="/assets/banner2.jpg" alt="">
+</ng-template>
+<ng-template swiperSlide>
+  <img style="width: 100%;object-fit: cover;" src="/assets/banner3.webp" alt="">
+</ng-template>
 </swiper>

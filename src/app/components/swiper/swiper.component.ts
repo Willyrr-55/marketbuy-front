@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import SwiperCore, { SwiperOptions } from 'swiper';
+import SwiperCore, { SwiperOptions, Pagination, Autoplay,Navigation } from 'swiper';
+
+SwiperCore.use([Pagination,Autoplay,Navigation]);
 
 @Component({
   selector: 'app-swiper',
@@ -10,11 +12,20 @@ import SwiperCore, { SwiperOptions } from 'swiper';
 export class SwiperComponent implements OnInit {
 
   config: SwiperOptions = {
-    slidesPerView: 3,
+    slidesPerView: 1,
     spaceBetween: 50,
     navigation: true,
-    pagination: { clickable: true },
-    scrollbar: { draggable: true },
+    autoplay:true,
+    scrollbar:false,
+    pagination:true,
+    breakpoints:{
+      0:{
+        navigation:false
+      },
+      500:{
+        navigation:true
+      }
+    }
   };
 
   constructor() { }

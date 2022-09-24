@@ -14,7 +14,7 @@ export class WishlistService {
   ) { }
 
   addProductToWishlist(productId:string){
-    return this.httpClient.post(`${baseurlapi}/addProductToWishlist`, productId)
+    return this.httpClient.post(`${baseurlapi}/addProductToWishlist`, {productId})
   }
 
   getWishlist(page:number){

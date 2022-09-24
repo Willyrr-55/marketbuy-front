@@ -1,12 +1,10 @@
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatButtonModule} from '@angular/material/button';
 import { ComponentsModule } from '../components/components.module';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -16,11 +14,9 @@ import { ComponentsModule } from '../components/components.module';
   ],
   imports: [
     CommonModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSliderModule,
-    MatButtonModule,
-    ComponentsModule
+    MaterialModule,
+    ComponentsModule,
+    NgxPermissionsModule
   ],
   exports:[
     FooterComponent,

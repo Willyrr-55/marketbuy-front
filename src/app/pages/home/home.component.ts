@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService } from 'src/app/auth/auth.service';
 import { ProductI } from 'src/app/interfaces/product.interface';
-import { AuthModalComponent } from 'src/app/modals/auth-modal/auth-modal.component';
 import { ProductService } from 'src/app/services/product.service';
-import SwiperCore from 'swiper';
 
 @Component({
   selector: 'app-home',
@@ -16,20 +15,15 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    public dialog: MatDialog
-
+    private authService: AuthService,
+    private jwtHelperService: JwtHelperService,
   ) { }
 
   ngOnInit(): void {
     this.getProducts()
-  }
-
-  openDialog() {
-    const dialogRef = this.dialog.open(AuthModalComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    let token= this.authService.getToken()
+    const tokenDecode = this.jwtHelperService.decodeToken(token);
+    console.log(tokenDecode)
   }
 
   // onSwiper([swiper]) {

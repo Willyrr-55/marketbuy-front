@@ -1,1 +1,13 @@
-<p>swiper works!</p>
+<swiper
+[config]="config"
+>
+<ng-template swiperSlide>
+  <img style="width: 100%;object-fit: cover;" src="/assets/banner1.png" alt="">
+</ng-template>
+<ng-template swiperSlide>
+  <img style="width: 100%;object-fit: cover;" src="/assets/banner2.jpg" alt="">
+</ng-template>
+<ng-template swiperSlide>
+  <img style="width: 100%;object-fit: cover;" src="/assets/banner3.webp" alt="">
+</ng-template>
+</swiper>

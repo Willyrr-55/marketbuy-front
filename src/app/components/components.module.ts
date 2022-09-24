@@ -1,3 +1,4 @@
+import { MaterialModule } from 'src/app/material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardProductComponent } from './card-product/card-product.component';
@@ -9,14 +10,21 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DropzoneComponent } from './dropzone/dropzone.component';
+
+import { ProductComponent } from './product/product.component';
+import { SwiperModule } from 'swiper/angular';
 
 const components = [
   SwiperComponent,
   CardProductComponent,
   SearchInputComponent,
-  DropzoneComponent
+  DropzoneComponent,
+  ProductComponent,
+  SearchInputComponent
+
 ]
 
 
@@ -26,15 +34,16 @@ const components = [
   ],
   imports: [
     CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
     AutocompleteLibModule,
     ReactiveFormsModule,
     FormsModule,
+    FlexLayoutModule,
+    MaterialModule,
+    SwiperModule,
     NgxDropzoneModule,
-    FlexLayoutModule
-
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule
   ],
   exports:[
     components

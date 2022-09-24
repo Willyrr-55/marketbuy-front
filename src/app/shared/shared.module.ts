@@ -1,3 +1,4 @@
+import { NgxPermissionsModule } from 'ngx-permissions';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
@@ -9,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import { ComponentsModule } from '../components/components.module';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     ComponentsModule,
     MatMenuModule,
-    RouterModule
+    RouterModule,
+    NgxPermissionsModule,
+    MaterialModule
   ],
   exports:[
     FooterComponent,

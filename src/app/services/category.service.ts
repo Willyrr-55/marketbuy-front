@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { CategoryI } from '../interfaces/category.interface';
 
 const baseurlapi = environment.urlApi+'/category';
 
@@ -11,7 +12,8 @@ export class CategoryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  registerCategory(data:FormData){
+  registerCategory(data: FormData){
+
     return this.httpClient.post(`${baseurlapi}/createCategory`,data)
   }
 

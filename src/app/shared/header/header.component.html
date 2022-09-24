@@ -10,18 +10,28 @@
             [placeholder]="'Buscar productos'"
           ></app-search-input>
     </span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
+
+    <button *ngxPermissionsOnly="['no-auth']" (click)="authModal()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>person</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
+
+    <ng-container  *ngxPermissionsExcept="['no-auth']">
+        <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          Hola, {{user.full_name}}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button (click)="cerrarSecion()" mat-menu-item>
+            <span>Cerrar sesión</span>
+          </button>
+        </mat-menu>
+    </ng-container>
+
   </mat-toolbar>
   
   <mat-toolbar style="height: 30px;">
     <button mat-button routerLink="''">Productos</button>
 
-    <button mat-menu-item [matMenuTriggerFor]="DashboardMenu" style="width: 100px; height: 36px; line-height: 0px;">Dashboard</button>
+    <button *ngxPermissionsOnly="['admin']" mat-menu-item [matMenuTriggerFor]="DashboardMenu" style="width: 100px; height: 36px; line-height: 0px;">Dashboard</button>
       <mat-menu #DashboardMenu="matMenu" xPosition="before">
 
         <button mat-menu-item [matMenuTriggerFor]="CategoriaMenu">Categoria</button>

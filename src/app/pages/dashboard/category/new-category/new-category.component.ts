@@ -14,7 +14,7 @@ import { CategoryService } from 'src/app/services/category.service';
 export class NewCategoryComponent implements OnInit {
 
   labelPosition: 'false' | 'true' = 'true';
-
+    
 
   categoryForm:FormGroup;
   formSubmited:boolean = false;
@@ -99,7 +99,8 @@ export class NewCategoryComponent implements OnInit {
     categoryData.append('name',data.name);
     categoryData.append('description',data.description);
     categoryData.append('status',data.status);
-    categoryData.append('photo',this.photo[0]);
+    categoryData.append('files',this.photo[0]);
+
     console.log(this.categoryForm.value)
     console.log(this.photo)
     this.categoryService.registerCategory(categoryData).subscribe({

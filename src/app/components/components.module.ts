@@ -9,11 +9,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { DropzoneComponent } from './dropzone/dropzone.component';
 
 const components = [
   SwiperComponent,
   CardProductComponent,
-  SearchInputComponent
+  SearchInputComponent,
+  DropzoneComponent
 ]
 
 
@@ -29,6 +32,7 @@ const components = [
     AutocompleteLibModule,
     ReactiveFormsModule,
     FormsModule,
+    NgxDropzoneModule,
     FlexLayoutModule
 
   ],

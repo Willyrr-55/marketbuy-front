@@ -8,7 +8,7 @@ import { ProductI } from 'src/app/interfaces/product.interface';
 })
 export class CardProductComponent implements OnInit {
 
-  @Input() Product:ProductI;
+  @Input() products:ProductI[];
 
   constructor() { }
 

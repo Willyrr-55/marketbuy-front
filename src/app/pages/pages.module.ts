@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
-import { NgxSpinnerModule } from 'ngx-spinner';
+// import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     CommonModule,
     PagesRoutingModule,
     SharedModule,
-    NgxSpinnerModule
+    // NgxSpinnerModule
   ]
 })
 export class PagesModule { }

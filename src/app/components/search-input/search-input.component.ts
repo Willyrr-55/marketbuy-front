@@ -32,6 +32,7 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
+    
   }
 
   ngAfterViewInit(){

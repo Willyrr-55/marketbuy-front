@@ -5,3 +5,9 @@
   top: 12px;
   right: 12px;
 }
+
+.card-container {
+  display: flex;
+  // flex-wrap: wrap;
+  gap: 12px
+}

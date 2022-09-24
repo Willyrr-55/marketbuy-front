@@ -18,6 +18,9 @@ import localEs from '@angular/common/locales/es-US';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localEs);
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,

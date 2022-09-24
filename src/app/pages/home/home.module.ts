@@ -17,7 +17,6 @@ import { ComponentsModule } from 'src/app/components/components.module';
     FlexLayoutModule,
     SwiperModule,
     ComponentsModule
-
   ]
 })
 export class HomeModule { }

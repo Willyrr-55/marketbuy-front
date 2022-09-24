@@ -9,10 +9,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductComponent } from './product/product.component';
 
 const components = [
   SwiperComponent,
   CardProductComponent,
+
+  ProductComponent,
   SearchInputComponent
 ]
 

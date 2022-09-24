@@ -15,16 +15,95 @@
   </swiper> -->
   </section>
 
+  <!-- <button mat-raised-button (click)="openDialog()">Pick one</button> -->
+
   <!-- PRODUCTS CARDS -->
-  <section fxLayout="row wrap" fxLayoutGap="16px grid">
+
+  <div
+  style="margin-top: 20px;"
+    fxLayout="row wrap"
+    fxLayout.xs="column"
+    fxLayoutAlign="center"
+    fxLayoutGap="20px"
+  >
     <div
-      fxFlex="20%"
-      fxFlex.xs="50%"
-      fxFlex.sm="33.3%"
-      fxFlex.md="25%"
-      *ngFor="let item of products"
+
+      fxFlex="30"
+      fxFlex.md="30"
+      fxFlex.lg="30"
+      fxFlex.sm="30"
+      *ngFor="let book of [2, 2, 3,4,5]"
     >
-      <app-card-product [product]="item"></app-card-product>
+      <app-product></app-product>
     </div>
-  </section>
+  </div>
+
+
+  <mat-tab-group>
+    <mat-tab label="Inicio">
+      <h3>Speed &amp; Performance</h3>
+      <p>
+        Achieve the maximum speed possible on the Web Platform today, and take
+        it further, via Web Workers and server-side rendering. Angular puts you
+        in control over scalability. Meet huge data requirements by building
+        data models on RxJS, Immutable.js or another push-model.
+      </p></mat-tab
+    >
+    <mat-tab label="Airpods">
+      <h3>Incredible tooling</h3>
+      <p>
+        Build features quickly with simple, declarative templates. Extend the
+        template language with your own components and use a wide array of
+        existing components. Get immediate Angular-specific help and feedback
+        with nearly every IDE and editor. All this comes together so you can
+        focus on building amazing apps rather than trying to make the code work.
+      </p>
+    </mat-tab>
+    <mat-tab label="iPad">
+      <h3>What is Angular?</h3>
+
+      <p>
+        Angular is a platform that makes it easy to build applications with the
+        web. Angular combines declarative templates, dependency injection, end
+        to end tooling, and integrated best practices to solve development
+        challenges. Angular empowers developers to build applications that live
+        on the web, mobile, or the desktop
+      </p>
+    </mat-tab>
+
+    <mat-tab label="iPhone">
+      <h3>What is Angular?</h3>
+
+      <p>
+        Angular is a platform that makes it easy to build applications with the
+        web. Angular combines declarative templates, dependency injection, end
+        to end tooling, and integrated best practices to solve development
+        challenges. Angular empowers developers to build applications that live
+        on the web, mobile, or the desktop
+      </p>
+    </mat-tab>
+    <mat-tab label="Accesorios Apple">
+      <h3>What is Angular?</h3>
+
+      <p>
+        Angular is a platform that makes it easy to build applications with the
+        web. Angular combines declarative templates, dependency injection, end
+        to end tooling, and integrated best practices to solve development
+        challenges. Angular empowers developers to build applications that live
+        on the web, mobile, or the desktop
+      </p>
+    </mat-tab>
+    <mat-tab label="Apple Watch">
+      <h3>What is Angular?</h3>
+
+      <p>
+        Angular is a platform that makes it easy to build applications with the
+        web. Angular combines declarative templates, dependency injection, end
+        to end tooling, and integrated best practices to solve development
+        challenges. Angular empowers developers to build applications that live
+        on the web, mobile, or the desktop
+      </p>
+    </mat-tab>
+
+  </mat-tab-group>
 </div>

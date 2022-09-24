@@ -17,7 +17,7 @@
           src="https://material.angular.io/assets/img/examples/shiba2.jpg"
           alt="Photo of a Shiba Inu"
         />
-        <button class="favorite" mat-mini-fab aria-label="Example icon button with a home icon">
+        <button class="favorite" mat-mini-fab aria-label="Example icon button with a home icon"  (click)="addProductToWishlsit(product._id)">
             <mat-icon>favorite</mat-icon>
           </button>
         <mat-card-content>

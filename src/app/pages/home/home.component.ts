@@ -43,7 +43,8 @@ export class HomeComponent implements OnInit {
     console.log('Realizando consulta')
     this.productService.getProducts().subscribe({
       next:(res:any)=>{
-        console.log(res)
+        this.products = res;
+        console.log(this.products)
       }
     })
   }

@@ -25,19 +25,14 @@
 
   <!-- PRODUCTS CARDS -->
   <section fxLayout="row wrap" fxLayoutGap="16px grid">
-<<<<<<< HEAD
-    <div fxFlex="20%" fxFlex.xs="50%" fxFlex.sm="33.3%" fxFlex.md="25%" *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
-      <app-card-product></app-card-product> 
-=======
     <div
       fxFlex="20%"
       fxFlex.xs="50%"
       fxFlex.sm="33.3%"
       fxFlex.md="25%"
-      *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      *ngFor="let item of products"
     >
-      <app-card-product></app-card-product>
->>>>>>> 686b66a1707ac99aa29515c7fbea014708a77fbd
+      <app-card-product [product]="item"></app-card-product>
     </div>
   </section>
 </div>

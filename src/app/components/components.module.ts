@@ -1,3 +1,4 @@
+import { MaterialModule } from 'src/app/material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardProductComponent } from './card-product/card-product.component';
@@ -10,6 +11,7 @@ import { SearchInputComponent } from './search-input/search-input.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './product/product.component';
+import { SwiperModule } from 'swiper/angular';
 
 const components = [
   SwiperComponent,
@@ -26,14 +28,12 @@ const components = [
   ],
   imports: [
     CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
     AutocompleteLibModule,
     ReactiveFormsModule,
     FormsModule,
-    FlexLayoutModule
-
+    FlexLayoutModule,
+    MaterialModule,
+    SwiperModule
   ],
   exports:[
     components

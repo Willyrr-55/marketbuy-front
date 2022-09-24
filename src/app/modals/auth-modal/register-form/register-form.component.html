@@ -1,0 +1,29 @@
+<form style="margin:1rem 0;display: flex;flex-direction: column;" [formGroup]="formRegister">
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre completo</mat-label>
+    <input formControlName="full_name" type="text" matInput>
+    <mat-error *ngIf="formSubmited && getControl('full_name').invalid">{{getErrorMessageName()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Correo electrónico</mat-label>
+    <input formControlName="email" type="email" matInput>
+    <mat-error *ngIf="formSubmited && getControl('email').invalid">{{getErrorMessageEmail()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Número de teléfono</mat-label>
+    <input formControlName="phone_number" type="text" matInput>
+    <mat-error *ngIf="formSubmited && getControl('phone_number').invalid">{{getErrorMessagePhoneNumber()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Contraseña</mat-label>
+    <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="formSubmited && getControl('password').invalid">{{getErrorMessagePassword()}}</mat-error>
+  </mat-form-field>
+</form>
+

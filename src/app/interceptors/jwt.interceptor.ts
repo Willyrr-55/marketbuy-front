@@ -64,7 +64,7 @@ export class JwtInterceptor implements HttpInterceptor {
   setToken(req:HttpRequest<any>,token){
     return req.clone({
       setHeaders:{
-        'x-access-token':token
+        'authorization':`Bearer ${token}`
       }
     });
   }

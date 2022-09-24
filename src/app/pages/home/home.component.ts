@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ProductI } from 'src/app/interfaces/product.interface';
-import { AuthModalComponent } from 'src/app/modals/auth-modal/auth-modal.component';
 import { ProductService } from 'src/app/services/product.service';
-import SwiperCore from 'swiper';
 
 @Component({
   selector: 'app-home',
@@ -15,21 +12,12 @@ export class HomeComponent implements OnInit {
   products:ProductI[];
 
   constructor(
-    private productService: ProductService,
-    public dialog: MatDialog
+    private productService: ProductService
 
   ) { }
 
   ngOnInit(): void {
     this.getProducts()
-  }
-
-  openDialog() {
-    const dialogRef = this.dialog.open(AuthModalComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
   // onSwiper([swiper]) {

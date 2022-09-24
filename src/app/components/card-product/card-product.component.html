@@ -14,20 +14,41 @@
 
           <img
           mat-card-image
-          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+          [src]="product.photos[0].url"
           alt="Photo of a Shiba Inu"
+          style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;"
         />
+
         <button class="favorite" mat-mini-fab aria-label="Example icon button with a home icon"  (click)="addProductToWishlsit(product._id)">
             <mat-icon>favorite</mat-icon>
           </button>
         <mat-card-content>
-          <mat-card-subtitle>Categoria</mat-card-subtitle>
-          <mat-card-title>Nombre producto</mat-card-title>
-          <p>$55.99</p>
+
+          <mat-card-subtitle>{{product.category.name}}</mat-card-subtitle>
+          <mat-card-title>{{product.name}}</mat-card-title>
+
+          <div class="color-price">
+            <div class="color-option">
+              <span class="color">Color:</span>
+              <div class="circles">
+                <span class="circle yellow" id="yellow"></span>
+              </div>
+            </div>
+            <div class="price">
+              <span class="price_num">{{product.price | currency}}</span>
+            </div>
+          </div>
 
 
         </mat-card-content>
-        <mat-card-actions fxLayout="row wrap">
-          <button fxFlex="100%" mat-raised-button>Ver detalle del producto</button>
+        <mat-card-actions fxLayout="row wrap" >
+          <button fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button >Añadir al carrito</button>
+          <button fxFlex="100%" class="buttom-card" mat-raised-button style="margin: 10px 0 0 0;">Ver detalle del producto</button>
+
         </mat-card-actions>
+
+        <!-- <div class="button">
+          <div class="button-layer"></div>
+          <button>Añadir al carrito</button>
+        </div> -->
       </mat-card>

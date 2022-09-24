@@ -1,5 +1,6 @@
 .product-card {
   position: relative;
+  min-height: 480px;
   max-width: 355px;
   width: 100%;
   border-radius: 25px;
@@ -154,4 +155,12 @@
   font-weight: 600;
   letter-spacing: 1px;
   color: #fff;
+}
+
+
+
+.favorite{
+  position: absolute;
+  top: 12px;
+  right: 12px;
 }

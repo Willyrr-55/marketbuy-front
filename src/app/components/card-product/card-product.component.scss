@@ -1,7 +1,139 @@
 
+mat-card{
+  border-radius: 25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
 
 .favorite{
   position: absolute;
   top: 12px;
   right: 12px;
+}
+
+.buttom-card{
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) !important;
+  border-radius: 25px;
+  height: 50px;
+  // letter-spacing: 1px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+// .buttom-card:hover{
+//   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px !important;
+// }
+
+mat-card-actions{
+      margin: 0 10px;
+      margin-bottom: 20px !important;
+}
+
+.add-to-cart{
+  flex: 1 1 100%;
+  color: white;
+  box-sizing: border-box;
+  max-width: 100%;
+  letter-spacing: 1px;
+  font-size: 18px;
+  background-color: #f5da00;
+  font-weight: 600;
+  border: none;
+  box-shadow: none !important;
+}
+
+.button {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  border-radius: 25px;
+  margin-top: 30px;
+  overflow: hidden;
+}
+.button .button-layer {
+  position: absolute;
+  height: 100%;
+  width: 300%;
+  left: -100%;
+
+  background-color: #f5da00;
+  transition: all 0.4s ease;
+  border-radius: 25px;
+}
+.button:hover .button-layer {
+  left: 0;
+}
+.button button {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.color-price .color-option {
+  display: flex;
+  align-items: center;
+}
+
+
+.color-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.color-price .color-option .color {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-right: 8px;
+}
+.color-option .circles {
+  display: flex;
+}
+.color-option .circles .circle {
+  height: 18px;
+  width: 18px;
+  background: #0071c7;
+  border-radius: 50%;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+.color-option .circles .circle.blue.active {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0071c7;
+}
+.color-option .circles .circle.pink {
+  background: #fa1795;
+}
+.color-option .circles .circle.pink.active {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #fa1795;
+}
+.color-option .circles .circle.yellow {
+  background: #f5da00;
+}
+.color-option .circles .circle.yellow.active {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #f5da00;
+}
+.color-price .price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.color-price .price .price_num {
+  font-size: 25px;
+  font-weight: 600;
+  color: green;
+}
+.color-price .price .price_letter {
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: -4px;
+  color: #707070;
 }

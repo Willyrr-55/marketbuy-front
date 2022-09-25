@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductI } from 'src/app/interfaces/product.interface';
 import { AlertsService } from 'src/app/services/alerts.service';
 import { WishlistService } from 'src/app/services/wishlist.service';
@@ -14,7 +15,8 @@ export class CardProductComponent implements OnInit {
 
   constructor(
     private wishlistService: WishlistService,
-    private alertsService: AlertsService
+    private alertsService: AlertsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +30,10 @@ export class CardProductComponent implements OnInit {
       },error:(e:any)=>{
           this.alertsService.toastMixin(e.error.message,'error');
       }});
+  }
+
+  detail(_id:string){
+    this.router.navigate(['/products/details/',_id])
   }
 
 }

@@ -19,7 +19,7 @@ export class SwiperComponent implements OnInit {
     slidesPerView: 1,
     spaceBetween: 50,
     // navigation: true,
-    // autoplay:true,
+    autoplay:true,
     scrollbar: false,
     pagination: { clickable: true },
     breakpoints: {
@@ -33,9 +33,9 @@ export class SwiperComponent implements OnInit {
   };
 
   infoSwiper = [
-    { url: '/assets/banner1.png', background: '#EAB676', title:'Súper descuentos', subTitle:'Aprovecha los súper descuentos que tenemos para ti todas las semanas'},
-    { url: '/assets/banner2.jpg', background: '#ABDBE3', title:'Tecnología a tu alcance', subTitle:'Tenemos lo mejor de la tecnología al alcance de un click' },
-    { url: '/assets/banner3.webp', background: '#76B5C5', title:'Especialistas en productos Apple', subTitle:'Contamos con asesoramientos sobre garantías, productos en específico, y más.' },
+    { url: '/assets/apple-hero-757.png', background: '#EAB676', title:'Súper descuentos', subTitle:'Aprovecha los súper descuentos que tenemos para ti todas las semanas'},
+    { url: '/assets/descarga.png', background: '#ABDBE3', title:'Tecnología a tu alcance', subTitle:'Tenemos lo mejor de la tecnología al alcance de un click' },
+    { url: '/assets/descarga2.png', background: '#76B5C5', title:'Especialistas en productos Apple', subTitle:'Contamos con asesoramientos sobre garantías, productos en específico, y más.' },
   ];
 
   constructor() {}

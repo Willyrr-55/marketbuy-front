@@ -41,6 +41,18 @@ mat-card-actions{
   box-shadow: none !important;
 }
 
+a{
+  display: block;
+  margin: 14px auto 0 auto;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
 .button {
   position: relative;
   height: 50px;

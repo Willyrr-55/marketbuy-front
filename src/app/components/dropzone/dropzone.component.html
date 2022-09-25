@@ -1,0 +1,9 @@
+<ngx-dropzone [multiple]="multiple" [accept]="accept" #dropzone (change)="onSelect($event)" class="flex-wrap">
+	<ngx-dropzone-label>{{label}}</ngx-dropzone-label>
+  <ngx-dropzone-image-preview (click)="($event.stopPropagation());(checkPhotoAsPrincipal(i))" [removable]="true" ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files;let i =index;" [file]="f" (removed)="onRemove(f)">
+    <ngx-dropzone-label style="border-radius:.3rem; background-color: white;color: black;bottom: 0;" *ngIf="showOrder">Imagen #{{i+1}}</ngx-dropzone-label>
+  </ngx-dropzone-image-preview>
+</ngx-dropzone>
+<button *ngIf="btn" type="button" [disabled]="files.length>=maxFile" (click)="dropzone.showFileSelector()" class="btn btn-sm btn-block btn-primary mt-2 w-100">Agregar archivo</button>
+<!-- <a id="videoPreview" data-fancybox="video-gallery" [attr.data-src]="videoTemp | safeResourceUrl" data-width="640" data-height="360"></a> -->
+

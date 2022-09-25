@@ -24,8 +24,8 @@
           </button>
         <mat-card-content>
 
-          <mat-card-subtitle>{{product.category.name}}</mat-card-subtitle>
-          <mat-card-title>{{product.name}}</mat-card-title>
+          <mat-card-subtitle style="cursor: pointer;">{{product.category.name}}</mat-card-subtitle>
+          <mat-card-title style="cursor: pointer;">{{product.name}}</mat-card-title>
 
           <div class="color-price">
             <div class="color-option">
@@ -43,6 +43,7 @@
         </mat-card-content>
         <mat-card-actions fxLayout="row wrap" >
           <button fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button >Añadir al carrito</button>
+
           <button fxFlex="100%" class="buttom-card" mat-raised-button style="margin: 10px 0 0 0;">Ver detalle del producto</button>
 
         </mat-card-actions>

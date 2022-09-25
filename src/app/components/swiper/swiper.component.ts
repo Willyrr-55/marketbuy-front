@@ -1,37 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 
-import SwiperCore, { SwiperOptions, Pagination, Autoplay,Navigation } from 'swiper';
+import SwiperCore, {
+  SwiperOptions,
+  Pagination,
+  Autoplay,
+  Navigation,
+} from 'swiper';
 
-SwiperCore.use([Pagination,Autoplay,Navigation]);
+SwiperCore.use([Pagination, Autoplay, Navigation]);
 
 @Component({
   selector: 'app-swiper',
   templateUrl: './swiper.component.html',
-  styleUrls: ['./swiper.component.scss']
+  styleUrls: ['./swiper.component.scss'],
 })
 export class SwiperComponent implements OnInit {
-
   config: SwiperOptions = {
     slidesPerView: 1,
     spaceBetween: 50,
-    navigation: true,
-    autoplay:true,
-    scrollbar:false,
-    pagination:true,
-    breakpoints:{
-      0:{
-        navigation:false
+    // navigation: true,
+    // autoplay:true,
+    scrollbar: false,
+    pagination: { clickable: true },
+    breakpoints: {
+      0: {
+        navigation: false,
       },
-      500:{
-        navigation:true
-      }
-    }
+      500: {
+        navigation: true,
+      },
+    },
   };
 
-  constructor() { }
+  infoSwiper = [
+    { url: '/assets/banner1.png', background: '#EAB676', title:'Súper descuentos', subTitle:'Aprovecha los súper descuentos que tenemos para ti todas las semanas'},
+    { url: '/assets/banner2.jpg', background: '#ABDBE3', title:'Tecnología a tu alcance', subTitle:'Tenemos lo mejor de la tecnología al alcance de un click' },
+    { url: '/assets/banner3.webp', background: '#76B5C5', title:'Especialistas en productos Apple', subTitle:'Contamos con asesoramientos sobre garantías, productos en específico, y más.' },
+  ];
 
-  ngOnInit(): void {
-  }
+  constructor() {}
+
+  ngOnInit(): void {}
 
   onSwiper([swiper]) {
     console.log(swiper);

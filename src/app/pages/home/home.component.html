@@ -1,7 +1,7 @@
 <div class="container">
   <!-- Swiper -->
-  <section>
-    <app-swiper></app-swiper>
+  <section class="swiper">
+    <app-swiper style="cursor: pointer;"></app-swiper>
 
     <!-- <swiper
     [slidesPerView]="3"
@@ -17,39 +17,39 @@
 
   <!-- <button mat-raised-button (click)="openDialog()">Pick one</button> -->
 
-  <!-- PRODUCTS CARDS -->
+        <mat-tab-group>
+          <mat-tab label="Inicio">
+            <h3>Speed &amp; Performance</h3>
+            <p>
+              Achieve the maximum speed possible on the Web Platform today, and take
+              it further, via Web Workers and server-side rendering. Angular puts you
+              in control over scalability. Meet huge data requirements by building
+              data models on RxJS, Immutable.js or another push-model.
+            </p>
+              <!-- PRODUCTS CARDS -->
 
-  <div
-  style="margin-top: 20px;"
-    fxLayout="row wrap"
-    fxLayout.xs="column"
-    fxLayoutAlign="center"
-    fxLayoutGap="20px"
-  >
-    <div
+        <div
+        style="margin: 2rem 0 2rem 0;"
+          fxLayout="row wrap"
+          fxLayout.xs="column"
+          fxLayoutAlign="center"
+          fxLayoutGap="20px"
+        >
+          <div
 
-      fxFlex="30"
-      fxFlex.md="30"
-      fxFlex.lg="30"
-      fxFlex.sm="30"
-      *ngFor="let product of products"
-    >
-      <app-product [product]="product"></app-product>
-      <br><br>
-      <app-card-product [product]="product"></app-card-product>
-      
-    </div>
-  </div>
+            fxFlex="30"
+            fxFlex.md="30"
+            fxFlex.lg="30"
+            fxFlex.sm="30"
+            *ngFor="let product of products"
+          >
+            <!-- <app-product [product]="product"></app-product>
+            <br><br> -->
+            <app-card-product [product]="product"></app-card-product>
 
-  <mat-tab-group>
-    <mat-tab label="Inicio">
-      <h3>Speed &amp; Performance</h3>
-      <p>
-        Achieve the maximum speed possible on the Web Platform today, and take
-        it further, via Web Workers and server-side rendering. Angular puts you
-        in control over scalability. Meet huge data requirements by building
-        data models on RxJS, Immutable.js or another push-model.
-      </p></mat-tab
+          </div>
+        </div>
+      </mat-tab
     >
     <mat-tab label="Airpods">
       <h3>Incredible tooling</h3>
@@ -60,6 +60,28 @@
         with nearly every IDE and editor. All this comes together so you can
         focus on building amazing apps rather than trying to make the code work.
       </p>
+        <!-- PRODUCTS CARDS -->
+          <div
+          style="margin-top: 20px;"
+            fxLayout="row wrap"
+            fxLayout.xs="column"
+            fxLayoutAlign="center"
+            fxLayoutGap="20px"
+          >
+            <div
+
+              fxFlex="30"
+              fxFlex.md="30"
+              fxFlex.lg="30"
+              fxFlex.sm="30"
+              *ngFor="let product of products"
+            >
+              <!-- <app-product [product]="product"></app-product>
+              <br><br> -->
+              <app-card-product [product]="product"></app-card-product>
+
+            </div>
+          </div>
     </mat-tab>
     <mat-tab label="iPad">
       <h3>What is Angular?</h3>

@@ -30,4 +30,20 @@
 
   </mat-toolbar>
 
+  <mat-toolbar style="height: 30px;">
+    <button mat-button routerLink="''">Productos</button>
+
+    <button *ngxPermissionsOnly="['admin']" mat-menu-item [matMenuTriggerFor]="DashboardMenu" style="width: 100px; height: 36px; line-height: 0px;">Dashboard</button>
+      <mat-menu #DashboardMenu="matMenu" xPosition="before">
+
+        <button mat-menu-item [matMenuTriggerFor]="CategoriaMenu">Categoria</button>
+          <mat-menu #CategoriaMenu="matMenu" xPosition="before">
+            <a mat-menu-item  routerLink="/dashboard/category/new-category" >Nueva categoria</a>
+            <a mat-menu-item routerLink="/dashboard/category/all-category" >Todas las categorias</a>
+          </mat-menu>
+
+      </mat-menu>
+
+  </mat-toolbar>
+
 </header>

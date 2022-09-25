@@ -1,13 +1,34 @@
+
 <swiper
 [config]="config"
 >
-<ng-template swiperSlide>
-  <img style="width: 100%;object-fit: cover;" src="/assets/banner1.png" alt="">
+
+  <ng-template swiperSlide *ngFor="let swiper of infoSwiper">
+    <div class="container" [style.background]="swiper.background">
+      <div>
+        <div style="max-width: 558px;">
+          <h2>
+            {{swiper.title}}
+          </h2>
+          <h3>
+            {{swiper.subTitle}}
+          </h3>
+        </div>
+      </div>
+      <div style="width: 600px; height:auto;">
+        <img style="width: 100%;object-fit: cover;" [src]="swiper.url" alt="">
+      </div>
+
+    </div>
+
+  </ng-template>
+<!-- <ng-template swiperSlide>
+  <img style="width: 100%;object-fit: cover;" src="" alt="">
 </ng-template>
 <ng-template swiperSlide>
-  <img style="width: 100%;object-fit: cover;" src="/assets/banner2.jpg" alt="">
+  <img style="width: 100%;object-fit: cover;" src="" alt="">
 </ng-template>
 <ng-template swiperSlide>
-  <img style="width: 100%;object-fit: cover;" src="/assets/banner3.webp" alt="">
-</ng-template>
+  <img style="width: 100%;object-fit: cover;" [src]="" alt="">
+</ng-template> -->
 </swiper>

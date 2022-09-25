@@ -1,0 +1,47 @@
+<div class="container">
+    <form [formGroup]="categoryForm" (ngSubmit)="category?editCategory():registerCategory()" >
+      <div    >
+            <div fxFlex="40"> 
+                  <span>Imagen de la categoria</span>
+                  <div>
+                        <app-dropzone *ngIf="!category"  [dimensionState]="true" [btn]="false" [dimensionesImg]="dimensiones"  [files]="photo" [maxFile]="1" [accept]="'image/*'"></app-dropzone>
+                  </div>
+            </div>
+            <div class="input-container" fxFlex="60">
+                  <input [class]="formSubmited && categoryForm.get('name').invalid?'is-invalid':''" formControlName="name" type="text" placeholder="Nombre de la categoria">   
+                  <div *ngIf="formSubmited && categoryForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
+
+                  <textarea [class]="formSubmited && categoryForm.get('description').invalid?'is-invalid':''" formControlName="description" class="descripcion" type="text" placeholder="Descripción de la categoría"></textarea>
+                        <div *ngIf="formSubmited && categoryForm.get('description').invalid" class="invalid-feedback">
+                        {{getErrorMessageDescription()}}</div>
+            </div>
+      </div>
+ 
+                
+      <section class="example-section estado">
+            <label class="example-margin">Estado:</label>
+            <mat-radio-group formControlName="status" [(ngModel)]="labelPosition" >
+                  <mat-radio-button class="example-margin" mat-accent value="true">Activada</mat-radio-button>
+                  <mat-radio-button class="example-margin"  value="false">Desactivada</mat-radio-button>
+            </mat-radio-group>
+      </section>
+      <small style="margin-top: -3px; margin-left: 20px">Desactive si la categoría no está en uso.</small>
+      <div *ngIf="formSubmited && categoryForm.get('status').invalid" class="invalid-feedback">
+            {{getErrorMessageStatus()}}</div>
+
+ 
+      <div fxLayout="row">
+            <button type="submit" fxFlex="100">Crear categoria</button>
+      </div>
+    </form>
+   
+  </div>
+
+  <!-- <div class="form-check form-switch">
+      <input formControlName="status" type="checkbox" class="form-check-input" id="statusCategory" checked>
+      <label class="form-check-label" for="statusCategory">Estado: {{categoryForm.get('status').value?'Activa':'Desactivada'}}</label>
+    </div>
+    <small class="form-text text-muted">Deshabilite si la categoría no está en uso.</small>
+    <div *ngIf="formSubmited && categoryForm.get('status').invalid" class="invalid-feedback">
+      {{getErrorMessageStatus()}}</div>
+  </div> -->

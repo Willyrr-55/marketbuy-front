@@ -12,6 +12,7 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './product/product.component';
 import { SwiperModule } from 'swiper/angular';
+import { RouterModule } from '@angular/router';
 
 const components = [
   SwiperComponent,
@@ -33,7 +34,8 @@ const components = [
     FormsModule,
     FlexLayoutModule,
     MaterialModule,
-    SwiperModule
+    SwiperModule,
+    RouterModule
   ],
   exports:[
     components

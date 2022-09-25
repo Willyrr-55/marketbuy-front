@@ -1,1 +1,86 @@
-<p>detail-product works!</p>
+<div class="container">
+  <!-- Gallery + details-->
+  <div class="div-product">
+    <div class="tab-pane">
+      <div fxLayout="row wrap">
+        <!-- Product gallery-->
+        <div style="display: flex">
+          <div class="product-gallery">
+
+            <div class="product-gallery-preview order-sm-2">
+              <div
+                [id]="'gallery' + item.public_id"
+                *ngFor="
+                  let item of product?.photos;
+                  let i = index;
+                  first as isFirst
+                "
+                [class]="isFirst ? 'active' : ''"
+                class="product-gallery-preview-item"
+              >
+                <img
+                  style="height: 100%; object-fit: contain"
+                  class="image-zoom"
+                  appImageZoom
+                  [src]="item.url"
+                  [attr.data-zoom]="item.url"
+                  [alt]="product?.name"
+                />
+                <div class="image-zoom-pane"></div>
+              </div>
+            </div>
+
+            <div class="product-gallery-thumblist order-sm-1 ms-0">
+              <ng-container
+                *ngFor="
+                  let item of product?.photos;
+                  let i = index;
+                  first as isFirst
+                "
+              >
+                <label
+                  [for]="'color' + item.public_id"
+                  class="product-gallery-thumblist-item"
+                  [class]="isFirst ? 'active' : ''"
+                  [id]="'gallery-thumblist' + item.public_id"
+                  (click)="
+                  setCurrentGalleryItem(
+                      'gallery' + item.public_id,
+                      'gallery-thumblist' + item.public_id
+                    )
+                  "
+                >
+                  <img
+                    [src]="item.url"
+                    style="height: 100%"
+                    alt="Product thumb"
+                  />
+                </label>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product details-->
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <div>images</div>
+  <div>imagePrincipal</div>
+  <div>
+    <mat-card class="example-card">
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      <mat-card-content>
+        <p>This card indeterminates progress bar.</p>
+        <p>sadfasdfd</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

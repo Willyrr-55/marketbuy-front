@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ProductI } from '../interfaces/product.interface';
 
 const baseurlapi = environment.urlApi+'/product';
 
@@ -19,6 +21,10 @@ export class ProductService {
 
   getProducts(){
     return this.httpClient.get(`${baseurlapi}/getProducts`);
+  }
+
+  getDetailProduct(idProduct:string):Observable<ProductI>{
+    return this.httpClient.get<ProductI>(`${baseurlapi}/getDetailProduct`,{params:{idProduct}})
   }
 
 }

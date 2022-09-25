@@ -1,0 +1,55 @@
+<div class=" title-container">
+      <h3>{{brandToEdit?'Editar':'Nueva'}} Marca</h3>
+</div>
+
+<div class="container">
+    <form [formGroup]="brandForm" (ngSubmit)="brandToEdit?editBrand():registerBrand()" >
+      <div fxLayout="row" fxLayout.xs="column" >
+            <div fxFlex="40"> 
+                  <span>Imagen de la marca</span>
+                  <div>
+                        <app-dropzone *ngIf="!brandToEdit"  [dimensionState]="true" [btn]="false" [dimensionesImg]="dimensiones"  [files]="photo" [maxFile]="1" [accept]="'image/*'" ></app-dropzone>
+                        <img style="width: 73%;object-fit: contain;" *ngIf="brandToEdit" [src]="brandToEdit.photo?brandToEdit.photo[0].url:'/assets/emptyImg.png'" alt="">
+                        <div *ngIf="brandToEdit">
+                          <button type="button" (click)="changePhoto()" class="btn btn-sm btn-block btn-primary mt-1 w-100">Cambiar imagen</button>
+                        </div>                  
+                  </div>
+            </div>
+            <div class="input-container" fxFlex="60">
+                  <input [class]="formSubmited && brandForm.get('name').invalid?'is-invalid':''" formControlName="name" type="text" placeholder="Nombre de la marca">   
+                  <div *ngIf="formSubmited && brandForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
+
+                  <textarea [class]="formSubmited && brandForm.get('description').invalid?'is-invalid':''" formControlName="description" class="descripcion" type="text" placeholder="Descripción de la marca"></textarea>
+                        <div *ngIf="formSubmited && brandForm.get('description').invalid" class="invalid-feedback">
+                        {{getErrorMessageDescription()}}</div>
+            </div>
+      </div>
+ 
+                
+      <section class="example-section estado" *ngIf="!brandToEdit">
+            <label class="example-margin">Estado:</label>
+            <mat-radio-group formControlName="status" [(ngModel)]="labelPosition" >
+                  <mat-radio-button class="example-margin" mat-accent value="true">Activar</mat-radio-button>
+                  <mat-radio-button class="example-margin"  value="false">Desactivar</mat-radio-button>
+            </mat-radio-group>
+            <small style="margin-top: -3px; margin-left: 20px">Desactive si la marca no está en uso.</small>
+            <div *ngIf="formSubmited && brandForm.get('status').invalid" class="invalid-feedback">
+                  {{getErrorMessageStatus()}}</div>
+
+      </section>
+      
+      <div fxLayout="row">
+            <button type="submit" fxFlex="100">{{brandToEdit?'Editar':'Registrar'}} marca</button>  
+      </div>
+    </form>
+   
+  </div>
+
+  <!-- <div class="form-check form-switch">
+      <input formControlName="status" type="checkbox" class="form-check-input" id="statusCategory" checked>
+      <label class="form-check-label" for="statusCategory">Estado: {{categoryForm.get('status').value?'Activa':'Desactivada'}}</label>
+    </div>
+    <small class="form-text text-muted">Deshabilite si la categoría no está en uso.</small>
+    <div *ngIf="formSubmited && categoryForm.get('status').invalid" class="invalid-feedback">
+      {{getErrorMessageStatus()}}</div>
+  </div> -->

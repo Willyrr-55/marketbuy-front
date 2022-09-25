@@ -1,12 +1,13 @@
 <header>
 
-  <mat-toolbar>
+  <mat-toolbar >
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>My App</span>
-    <span class="example-spacer">
+    <span>MarcketBuy</span>
+    <span class="example-spacer" >
       <app-search-input
+            style=" width: 80%;"
             [placeholder]="'Buscar productos'"
           ></app-search-input>
     </span>
@@ -40,6 +41,12 @@
           <mat-menu #CategoriaMenu="matMenu" xPosition="before">
             <a mat-menu-item  routerLink="/dashboard/category/new-category" >Nueva categoria</a>
             <a mat-menu-item routerLink="/dashboard/category/all-category" >Todas las categorias</a>
+          </mat-menu>
+
+          <button mat-menu-item [matMenuTriggerFor]="MarcaMenu">Marca</button>
+          <mat-menu #MarcaMenu="matMenu" xPosition="before">
+            <a mat-menu-item  routerLink="/dashboard/brands/new-brand" >Nueva marca</a>
+            <a mat-menu-item routerLink="/dashboard/brands/all-brands" >Todas las marcas</a>
           </mat-menu>
 
       </mat-menu>

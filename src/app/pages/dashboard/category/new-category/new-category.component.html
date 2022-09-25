@@ -1,10 +1,17 @@
+<div class=" title-container">
+      <h3>{{categoryToEdit?'Editar':'Nueva'}} Categoria</h3>
+</div>
 <div class="container">
-    <form [formGroup]="categoryForm" (ngSubmit)="category?editCategory():registerCategory()" >
-      <div    >
+    <form [formGroup]="categoryForm" (ngSubmit)="categoryToEdit?editCategory():registerCategory()" >
+      <div fxLayout="row" fxLayout.xs="column" >
             <div fxFlex="40"> 
                   <span>Imagen de la categoria</span>
                   <div>
-                        <app-dropzone *ngIf="!category"  [dimensionState]="true" [btn]="false" [dimensionesImg]="dimensiones"  [files]="photo" [maxFile]="1" [accept]="'image/*'"></app-dropzone>
+                        <app-dropzone *ngIf="!categoryToEdit"  [dimensionState]="true" [btn]="false" [dimensionesImg]="dimensiones"  [files]="photo" [maxFile]="1" [accept]="'image/*'" ></app-dropzone>
+                        <img style="width: 73%;object-fit: contain;" *ngIf="categoryToEdit" [src]="categoryToEdit.photo?categoryToEdit.photo[0].url:'/assets/emptyImg.png'" alt="">
+                        <div *ngIf="categoryToEdit">
+                          <button type="button" (click)="changePhoto()" class="btn btn-sm btn-block btn-primary mt-1 w-100">Cambiar imagen</button>
+                        </div>                  
                   </div>
             </div>
             <div class="input-container" fxFlex="60">
@@ -18,20 +25,20 @@
       </div>
  
                 
-      <section class="example-section estado">
+      <section class="example-section estado" *ngIf="!categoryToEdit">
             <label class="example-margin">Estado:</label>
             <mat-radio-group formControlName="status" [(ngModel)]="labelPosition" >
-                  <mat-radio-button class="example-margin" mat-accent value="true">Activada</mat-radio-button>
-                  <mat-radio-button class="example-margin"  value="false">Desactivada</mat-radio-button>
+                  <mat-radio-button class="example-margin" mat-accent value="true">Activar</mat-radio-button>
+                  <mat-radio-button class="example-margin"  value="false">Desactivar</mat-radio-button>
             </mat-radio-group>
-      </section>
-      <small style="margin-top: -3px; margin-left: 20px">Desactive si la categoría no está en uso.</small>
-      <div *ngIf="formSubmited && categoryForm.get('status').invalid" class="invalid-feedback">
-            {{getErrorMessageStatus()}}</div>
+            <small style="margin-top: -3px; margin-left: 20px">Desactive si la categoría no está en uso.</small>
+            <div *ngIf="formSubmited && categoryForm.get('status').invalid" class="invalid-feedback">
+                  {{getErrorMessageStatus()}}</div>
 
- 
+      </section>
+      
       <div fxLayout="row">
-            <button type="submit" fxFlex="100">Crear categoria</button>
+            <button type="submit" fxFlex="100">{{categoryToEdit?'Editar':'Registrar'}} categoría</button>
       </div>
     </form>
    

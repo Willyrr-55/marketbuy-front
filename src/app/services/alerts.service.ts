@@ -51,8 +51,8 @@ export class AlertsService {
   async confirmDialogWithModals(title:string,text:string,icon:SweetAlertIcon){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass:{
-        confirmButton:'btn btn-success',
-        cancelButton:'btn btn-danger'
+        confirmButton:' btn-success',
+        cancelButton:' btn-danger'
       },
       buttonsStyling:false
     });

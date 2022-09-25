@@ -25,6 +25,14 @@ const routes:Routes =[
     path:'account',
     loadChildren:()=>import('./account/account.module').then(m=>m.AccountModule)
   },
+  {
+    path: 'category',
+    loadChildren: () => import('./dashboard/category/category.module').then(m => m.CategoryModule)
+  },
+  {
+    path: 'brands',
+    loadChildren: () => import('./dashboard/brand/brand.module').then(m => m.BrandModule)
+  },
   // {
   //   path:'brands',
   //   loadChildren:()=>import('./brands/brands.module').then(m=>m.BrandsModule)

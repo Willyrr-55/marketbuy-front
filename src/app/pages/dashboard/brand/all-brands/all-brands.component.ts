@@ -2,29 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { finalize } from 'rxjs';
-import { CategoryI } from 'src/app/interfaces/category.interface';
+import { BrandI } from 'src/app/interfaces/brand.interface';
 import { AlertsService } from 'src/app/services/alerts.service';
-import { CategoryService } from 'src/app/services/category.service';
+import { BrandService } from 'src/app/services/brand.service';
+
 
 @Component({
-  selector: 'app-all-category',
-  templateUrl: './all-category.component.html',
-  styleUrls: ['./all-category.component.scss']
+  selector: 'app-all-brands',
+  templateUrl: './all-brands.component.html',
+  styleUrls: ['./all-brands.component.scss']
 })
-export class AllCategoryComponent implements OnInit {
+export class AllBrandsComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'photo', 'description', 'status','opciones'];
   dataSource = new MatTableDataSource([]);
 
-  categories: CategoryI[]
+  brands: BrandI[]
  
-  constructor(private categoryService: CategoryService,
+  constructor(private brandService: BrandService,
     private alertsService: AlertsService,
     private ngxSpinnerService: NgxSpinnerService
     )  { }
 
   ngOnInit(): void {
-    this.getCategories()
+    this.getBrands()
   }
 
   applyFilter(event: Event) {
@@ -32,29 +33,29 @@ export class AllCategoryComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  getCategories(){
+  getBrands(){
 
-    this.categoryService.getCategories().subscribe({
+    this.brandService.getBrands().subscribe({
       next:(res:any)=>{
-       this.categories = res
-       this.dataSource = new MatTableDataSource(this.categories);
-       console.log(this.categories)
+       this.brands = res
+       this.dataSource = new MatTableDataSource(this.brands);
+       console.log(this.brands)
       }
     })
   }
   
-async changeStatusCategory(idCategory:string,currentStatus:boolean){
-  const {result}  = await this.alertsService.confirmDialogWithModals('Info.',`¿Deseas ${currentStatus?'desactivar':'activar'} esta categoría?`,'warning');
+async changeStatusBrand(idBrands:string,currentStatus:boolean){
+  const {result}  = await this.alertsService.confirmDialogWithModals('Info.',`¿Deseas ${currentStatus?'desactivar':'activar'} esta marca?`,'warning');
   if(result.isConfirmed){
     // console.log(idCategory)
       await this.ngxSpinnerService.show('generalSpinner');
     console.log(!currentStatus)
-    console.log(idCategory)
-    this.categoryService.changeStatus(idCategory, !currentStatus).pipe(
+    console.log(idBrands)
+    this.brandService.changeStatus(idBrands, !currentStatus).pipe(
       finalize(async()=>await this.ngxSpinnerService.hide('generalSpinner'))
     ).subscribe({
       next:(res:any)=>{
-        this.getCategories();
+        this.getBrands();
       },
       error:(e)=>{
         this.alertsService.toastMixin(e['error']['message'],'error');

@@ -11,8 +11,13 @@ const routes: Routes = [
         path:'category',
         loadChildren:()=>import('../dashboard/category/category.module').then(m=>m.CategoryModule)
       },
+      {
+        path:'brands',
+        loadChildren:()=>import('../dashboard/brand/brand.module').then(m=>m.BrandModule)
+      },
     ]
-  }
+  },
+  
 ];
 
 @NgModule({

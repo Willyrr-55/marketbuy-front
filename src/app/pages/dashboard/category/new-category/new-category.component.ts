@@ -45,7 +45,7 @@ export class NewCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.categoryToEdit = history.state?.element;
+    this.categoryToEdit = history.state?.category;
     if(this.categoryToEdit){
       this.setEditCategory();
     }

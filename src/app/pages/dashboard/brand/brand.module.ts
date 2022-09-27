@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { AllBrandsComponent } from './all-brands/all-brands.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     ComponentsModule,
     FlexLayoutModule,
+    MatExpansionModule
   ]
 })
 export class BrandModule { }

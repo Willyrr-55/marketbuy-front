@@ -10,7 +10,7 @@ export class EditBrandGuard implements CanActivate {
 
   canActivate(): boolean {
     const state:any = this.router.getCurrentNavigation().extras.state;
-    if(state?.element){
+    if(state?.brand){
       return true;
     }else{
       this.router.navigateByUrl('/dashboard/brands/all-brands');

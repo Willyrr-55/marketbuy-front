@@ -15,6 +15,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import {MatBadgeModule} from '@angular/material/badge';
 import { MaterialModule } from 'src/app/material/material.module';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { MaterialModule } from 'src/app/material/material.module';
     MatInputModule,
     MatBadgeModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    MatExpansionModule
   ]
 })
 export class CategoryModule { }

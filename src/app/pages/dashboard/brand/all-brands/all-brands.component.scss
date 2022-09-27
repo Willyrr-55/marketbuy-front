@@ -1,8 +1,115 @@
+.container-table {
+  padding: 10px;
+}
+
 table {
-    width: 100%;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.status {
+  border-radius: 5px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 84%;
+  margin: 13px auto;
+  height: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.status_activa {
+  background-color: #483084;
+}
+
+.status_desactiva {
+  background-color: #ed3350;
+}
+
+td {
+  min-width: 100px
+}
+
+th {
+  text-align: center !important;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  width: 300px;
+  margin-bottom: 15px
+}
+img {
+ width: 100%;
+}
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px; 
+  height: 200px;
+  margin: 6px auto 16px;
+}
+
+button {
+  background: #e66e6e;
+  color: #fff;
+}
+
+button:hover {
+  background: #ed3350;
+}
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+  width: 1000px;
+  min-width: 320px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+input {
+  box-sizing: border-box;
+  border-radius: 5px !important;
+  outline: none;
+  border: 1px solid #c4c2c2;
+  padding: 15px 0px 15px 15px;
+  border: 1px solid #c4c2c2;
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.btn-filter {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.mat-expansion-panel-header-description {
+  flex-grow: 1 !important;
+}
+@media (max-width: 600px){
+    // input {
+    //   width: 166%;
+    //   margin-top: 8px;
+    //   margin-left: -58px;
+    // }
+}

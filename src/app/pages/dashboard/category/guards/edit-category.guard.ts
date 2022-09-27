@@ -10,7 +10,8 @@ export class EditCategoryGuard implements CanActivate {
 
   canActivate(): boolean {
     const state:any = this.router.getCurrentNavigation().extras.state;
-    if(state?.element){
+    console.log(state?.category)
+    if(state?.category){
       return true;
     }else{
       this.router.navigateByUrl('/dashboard/category/all-category');

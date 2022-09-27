@@ -2,9 +2,93 @@
   <h3>Todas las Marcas</h3>
 </div>
 
-<div class="container-for-dashboard "  fxLayout="column">
-    
+
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+      </mat-panel-title>
+      <mat-panel-description>
+        Filtrar marcas
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
     <div>
+      <div class="form"   style=" margin-top: 10px;">
+        <div class="form-container">
+          <mat-radio-group [(ngModel)]="labelStatus"  >
+            <mat-radio-button class="example-margin"  mat-accent value="true">Activa</mat-radio-button>
+            <mat-radio-button class="example-margin"  value="false">Desactiva</mat-radio-button>
+            <mat-radio-button class="example-margin"  value="">Todas</mat-radio-button>
+          </mat-radio-group>
+          <div style="margin-bottom: 15px; margin-top: 15px">      
+            <mat-radio-group  [(ngModel)]="labelStrign" >
+              <mat-radio-button class="example-margin" (click)="limpiarForm()" mat-accent value="name">Nombre</mat-radio-button>
+              <mat-radio-button class="example-margin" (click)="limpiarForm()" value="description">Descripcion</mat-radio-button>
+            </mat-radio-group>
+  
+            <form [formGroup]="filterForm" (ngSubmit)="getBrands()">
+              <input *ngIf="labelStrign == 'name'" formControlName="name" type="text" placeholder="Nombre de la marca">   
+              <input *ngIf="labelStrign == 'description'" formControlName="description" type="text" placeholder="Descripcion de la marca">   
+              <div  fxLayout="column" class="button-container">
+                <button class="btn-danger btn-filter" type="submit">Filtrar</button>
+                <button class="btn-danger btn-filter" type="button" (click)="resetFilter()">Quitar Filtros</button>
+              </div>
+            </form>
+
+          </div>
+  
+        
+  
+        </div>
+      </div>
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>
+  
+
+ <div class="container-for-dashboard "  fxLayout="column">
+
+  
+  <div class="card-container"
+   
+  >
+    <mat-card
+        *ngFor="let brand of brands"
+        class="card"
+        flexLayoutAlign="center"
+      >
+        <div class="img">
+            <img
+            mat-card-image
+            [src]="brand.photo[0].url"
+            alt="Photo of a Shiba Inu"
+            style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;"
+          />
+        </div>
+        <mat-card-content>
+          <mat-card-subtitle style="cursor: pointer;">{{brand._id}}</mat-card-subtitle>
+          <mat-card-title style="cursor: pointer; font-size: 30px; margin-bottom: 20px;">{{brand.name}}</mat-card-title>
+          <div class="color-price">
+            <div class="color-option ">
+              <span class="color status" [ngClass]="brand.status?'status_activa':'status_desactiva'">{{brand.status?'Activa':'Desactivada'}}</span>
+            </div>
+          </div>
+          <p>
+            {{brand.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row wrap" >
+          <button fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button routerLink="/dashboard/brands/edit-brand"  [state]="{brand}">Editar</button>
+          <button fxFlex="100%" class="buttom-card" mat-raised-button style="margin: 10px 0 0 0;" (click)="changeStatusBrand(brand._id,brand.status)">{{brand.status?'Desactivar':'Activar'}}</button>
+        </mat-card-actions>
+      </mat-card>
+ </div> 
+
+
+    
+   <!-- <div>
       <mat-form-field appearance="standard">
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
@@ -13,31 +97,29 @@
     
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
-        <!-- Position Column -->
+
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef> Id </th>
           <td mat-cell *matCellDef="let element" style="width: 210px;"> {{element._id}} </td>
         </ng-container>
     
-        <!-- Name Column -->
+
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> Name </th>
           <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
     
-        <!-- Photo Column -->
+
         <ng-container matColumnDef="photo">
           <th mat-header-cell *matHeaderCellDef> Photo </th>
           <td mat-cell *matCellDef="let element" style=" width: 100px;"> <img style="width: 48%;" [src]="element.photo[0].url" alt=""> </td>
         </ng-container>
-    
-        <!-- description Column -->
+
         <ng-container matColumnDef="description">
           <th mat-header-cell *matHeaderCellDef> Description </th>
           <td mat-cell *matCellDef="let element"> {{element.description}} </td>
         </ng-container>
-    
-        <!-- Symbol Column -->
+
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef> Status </th>
           <td mat-cell *matCellDef="let element">
@@ -64,56 +146,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     
-        <!-- Row shown when there is no matching data. -->
         <tr class="mat-row" *matNoDataRow>
           <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
         </tr>
       </table>
-    </div>
+    </div> -->
   
-  <!-- <div
-  
-      fxFlex="30"
-      fxFlex.md="30"
-      fxFlex.lg="30"
-      fxFlex.sm="30"
-      *ngFor="let category of categories"
-    >
-      <mat-card
-          class="example-card"
-  
-          flexLayoutAlign="center"
-  
-        >
-  
-            <img
-            mat-card-image
-            [src]="category.photo[0].url"
-            alt="Photo of a Shiba Inu"
-            style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;"
-          />
-          <mat-card-content>
-  
-            <mat-card-subtitle style="cursor: pointer;">{{category._id}}</mat-card-subtitle>
-            <mat-card-title style="cursor: pointer;">{{category.name}}</mat-card-title>
-            <div class="color-price">
-              <div class="color-option">
-                <span class="color">{{category.status?'Activa':'Desactivada'}}</span>
-                
-              </div>
-            </div>
-            <p>
-              {{category.description}}
-            </p>
-          </mat-card-content>
-          <mat-card-actions fxLayout="row wrap" >
-            <button fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button >Editar</button>
-  
-            <button fxFlex="100%" class="buttom-card" mat-raised-button style="margin: 10px 0 0 0;">Desactivar</button>
-  
-          </mat-card-actions>
-        </mat-card>
-  </div>
-   -->
   
   </div>

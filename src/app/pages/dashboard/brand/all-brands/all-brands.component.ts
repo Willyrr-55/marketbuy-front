@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import {MatTableDataSource} from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { finalize } from 'rxjs';
@@ -13,18 +14,35 @@ import { BrandService } from 'src/app/services/brand.service';
   styleUrls: ['./all-brands.component.scss']
 })
 export class AllBrandsComponent implements OnInit {
+  
+  labelStatus: 'true' |'false' | '' = '' ;
+  labelStrign: 'description'|'id' | 'name' = 'name';
 
   displayedColumns: string[] = ['id', 'name', 'photo', 'description', 'status','opciones'];
   dataSource = new MatTableDataSource([]);
 
   brands: BrandI[]
+  brand: BrandI
+  filterForm: FormGroup
  
   constructor(private brandService: BrandService,
     private alertsService: AlertsService,
-    private ngxSpinnerService: NgxSpinnerService
+    private ngxSpinnerService: NgxSpinnerService,
+    private formBuilder:FormBuilder,
     )  { }
 
   ngOnInit(): void {
+    this.createForm()
+  }
+  
+  createForm(){
+    this.filterForm = this.formBuilder.group({
+      _id:[''],
+      name:[''],
+      description:[''],
+      status:[''],
+    });
+
     this.getBrands()
   }
 
@@ -34,14 +52,24 @@ export class AllBrandsComponent implements OnInit {
   }
 
   getBrands(){
+    this.filterForm.value.status = this.labelStatus
+    let data = this.filterForm.value
 
-    this.brandService.getBrands().subscribe({
+    this.brand = {
+      _id: data._id ,
+      name:data.name,
+      description: data.description,
+      status: data.status
+    }
+    this.brandService.filterBrands(this.brand).subscribe({
       next:(res:any)=>{
        this.brands = res
        this.dataSource = new MatTableDataSource(this.brands);
        console.log(this.brands)
-      }
+      },
+      error: (error) => console.log(error)
     })
+
   }
   
 async changeStatusBrand(idBrands:string,currentStatus:boolean){
@@ -62,6 +90,23 @@ async changeStatusBrand(idBrands:string,currentStatus:boolean){
       }
     });
   }
+}
+
+
+limpiarForm(){
+  this.filterForm.patchValue({
+   _id: '',
+   name: '',
+   description: '',
+   status: '',
+ });
+}
+
+resetFilter(){
+this.limpiarForm()
+ this.labelStatus = '';
+ this.labelStrign = 'name'
+ this.getBrands()
 }
 
 }

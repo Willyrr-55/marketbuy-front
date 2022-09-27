@@ -35,4 +35,11 @@ export class BrandService {
     return this.httpClient.put(`${baseurlapi}/changePhoto?id=${id}`,data)
   }
 
+  filterBrands(brand: BrandI){
+    if(brand._id){
+      return this.httpClient.get(`${baseurlapi}/filterBrands?_id=${brand._id}&name=${brand.name}&description=${brand.description}&status=${brand.status}`);
+    }else{
+      return this.httpClient.get(`${baseurlapi}/filterBrands?name=${brand.name}&description=${brand.description}&status=${brand.status}`);
+    }
+  }
 }

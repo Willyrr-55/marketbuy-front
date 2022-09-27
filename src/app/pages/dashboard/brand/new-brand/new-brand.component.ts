@@ -45,7 +45,7 @@ export class NewBrandComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.brandToEdit = history.state?.element;
+    this.brandToEdit = history.state?.brand;
     if(this.brandToEdit){
       this.setEditBrand();
     }

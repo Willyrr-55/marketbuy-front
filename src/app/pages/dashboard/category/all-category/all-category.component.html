@@ -1,37 +1,50 @@
 <div class=" title-container">
   <h3>Todas las Categorías</h3>
 </div>
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+      </mat-panel-title>
+      <mat-panel-description>
+        Filtrar categorias
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-  <h4>Filtrar Categroias</h4>
-  <div>
-
-    <form  [formGroup]="filterForm" (ngSubmit)="getCategories()"  fxLayout="column" fxLayoutAlign="center end"  style="margin-right: 20px;">
-      <div class="form-container">
-          <mat-radio-group formControlName="status" [(ngModel)]="labelStatus" >
+    <div>
+      <div class="form"   style=" margin-top: 10px;">
+        <div class="form-container">
+          <mat-radio-group [(ngModel)]="labelStatus"  >
             <mat-radio-button class="example-margin"  mat-accent value="true">Activa</mat-radio-button>
             <mat-radio-button class="example-margin"  value="false">Desactiva</mat-radio-button>
             <mat-radio-button class="example-margin"  value="">Todas</mat-radio-button>
-        </mat-radio-group>
-        <div  fxLayout="column" fxLayoutAlign="center none" style="margin-bottom: 15px; margin-top: 15px">      
-          <mat-radio-group formControlName="undefined" [(ngModel)]="labelStrign" >
-            <mat-radio-button class="example-margin" (click)="filterForm.reset()" mat-accent value="name">Nombre</mat-radio-button>
-            <mat-radio-button class="example-margin" (click)="filterForm.reset()" value="description">Descripcion</mat-radio-button>
           </mat-radio-group>
+          <div style="margin-bottom: 15px; margin-top: 15px">      
+            <mat-radio-group  [(ngModel)]="labelStrign" >
+              <mat-radio-button class="example-margin" (click)="limpiarForm()" mat-accent value="name">Nombre</mat-radio-button>
+              <mat-radio-button class="example-margin" (click)="limpiarForm()" value="description">Descripcion</mat-radio-button>
+            </mat-radio-group>
+  
+            <form [formGroup]="filterForm" (ngSubmit)="getCategories()">
+              <input *ngIf="labelStrign == 'name'" formControlName="name" type="text" placeholder="Nombre de la categoria">   
+              <input *ngIf="labelStrign == 'description'" formControlName="description" type="text" placeholder="Descripcion de la categoria">   
+              <div  fxLayout="column" class="button-container">
+                <button class="btn-danger btn-filter" type="submit">Filtrar</button>
+                <button class="btn-danger btn-filter" type="button" (click)="resetFilter()">Quitar Filtros</button>
+              </div>
+            </form>
 
-          <div>
-            <input *ngIf="labelStrign == 'name'" formControlName="name" type="text" placeholder="Nombre de la categoria">   
-            <input *ngIf="labelStrign == 'description'" formControlName="description" type="text" placeholder="Descripcion de la categoria">   
           </div>
+  
+        
+  
         </div>
-
-        <div  fxLayout="column" class="button-container">
-          <button type="submit">Filtrar</button>
-          <button (click)="filterForm.reset()" type="submit">Quitar Filtros</button>
-        </div>
-
       </div>
-    </form>
-  </div>
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>
+  
 
 <div class="container-for-dashboard"  fxLayout="column">
   <!-- <div>
@@ -128,9 +141,9 @@
           </p>
         </mat-card-content>
         <mat-card-actions fxLayout="row wrap" >
-          <button fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button routerLink="/dashboard/category/edit-category" >Editar</button>
+          <button fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button routerLink="/dashboard/category/edit-category"  [state]="{category}">Editar</button>
 
-          <button fxFlex="100%" class="buttom-card" mat-raised-button style="margin: 10px 0 0 0;" (click)="changeStatusCategory(category._id,category.status)">Desactivar</button>
+          <button fxFlex="100%" class="buttom-card" mat-raised-button style="margin: 10px 0 0 0;" (click)="changeStatusCategory(category._id,category.status)">{{category.status?'Desactivar':'Activar'}}</button>
 
         </mat-card-actions>
       </mat-card>

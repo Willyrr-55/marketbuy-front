@@ -45,7 +45,6 @@ export class AllCategoryComponent implements OnInit {
       name:[''],
       description:[''],
       status:[''],
-      undefined:['']
     });
 
     this.getCategories()
@@ -58,6 +57,7 @@ export class AllCategoryComponent implements OnInit {
 
   getCategories(){
     // console.log(this.filterForm.value)
+    this.filterForm.value.status = this.labelStatus
     let data = this.filterForm.value
     this.category = {
       _id: data._id ,
@@ -94,6 +94,22 @@ async changeStatusCategory(idCategory:string,currentStatus:boolean){
       }
     });
   }
+}
+
+limpiarForm(){
+   this.filterForm.patchValue({
+    _id: '',
+    name: '',
+    description: '',
+    status: '',
+  });
+}
+
+resetFilter(){
+ this.limpiarForm()
+  this.labelStatus = '';
+  this.labelStrign = 'name'
+  this.getCategories()
 }
 
 }

@@ -5,29 +5,31 @@
   <h4>Filtrar Categroias</h4>
   <div>
 
-    <form  [formGroup]="filterForm" (ngSubmit)="getCategories()" fxLayout="column" fxLayoutAlign="center end" >
-      <mat-radio-group formControlName="status" [(ngModel)]="labelStatus" >
-          <mat-radio-button class="example-margin"  mat-accent value="true">Activa</mat-radio-button>
-          <mat-radio-button class="example-margin"  value="false">Desactiva</mat-radio-button>
-          <mat-radio-button class="example-margin"  value="">Todas</mat-radio-button>
-      </mat-radio-group>
-     <div  fxLayout="column" fxLayoutAlign="center none">      
-      <mat-radio-group formControlName="undefined" [(ngModel)]="labelStrign" >
-        <mat-radio-button class="example-margin" (click)="filterForm.reset()" mat-accent value="name">Nombre</mat-radio-button>
-        <mat-radio-button class="example-margin" (click)="filterForm.reset()" value="description">Descripcion</mat-radio-button>
-      </mat-radio-group>
+    <form  [formGroup]="filterForm" (ngSubmit)="getCategories()"  fxLayout="column" fxLayoutAlign="center end"  style="margin-right: 20px;">
+      <div class="form-container">
+          <mat-radio-group formControlName="status" [(ngModel)]="labelStatus" >
+            <mat-radio-button class="example-margin"  mat-accent value="true">Activa</mat-radio-button>
+            <mat-radio-button class="example-margin"  value="false">Desactiva</mat-radio-button>
+            <mat-radio-button class="example-margin"  value="">Todas</mat-radio-button>
+        </mat-radio-group>
+        <div  fxLayout="column" fxLayoutAlign="center none" style="margin-bottom: 15px; margin-top: 15px">      
+          <mat-radio-group formControlName="undefined" [(ngModel)]="labelStrign" >
+            <mat-radio-button class="example-margin" (click)="filterForm.reset()" mat-accent value="name">Nombre</mat-radio-button>
+            <mat-radio-button class="example-margin" (click)="filterForm.reset()" value="description">Descripcion</mat-radio-button>
+          </mat-radio-group>
 
-      <div>
-        <input *ngIf="labelStrign == 'name'" formControlName="name" type="text" placeholder="Nombre de la categoria">   
-        <input *ngIf="labelStrign == 'description'" formControlName="description" type="text" placeholder="Descripcion de la categoria">   
+          <div>
+            <input *ngIf="labelStrign == 'name'" formControlName="name" type="text" placeholder="Nombre de la categoria">   
+            <input *ngIf="labelStrign == 'description'" formControlName="description" type="text" placeholder="Descripcion de la categoria">   
+          </div>
+        </div>
+
+        <div  fxLayout="column" class="button-container">
+          <button type="submit">Filtrar</button>
+          <button (click)="filterForm.reset()" type="submit">Quitar Filtros</button>
+        </div>
+
       </div>
-     </div>
-
-      <div  fxLayout="row">
-        <button type="submit">Filtrar</button>
-        <button (click)="filterForm.reset()" type="submit">Quitar Filtros</button>
-      </div>
-
     </form>
   </div>
 

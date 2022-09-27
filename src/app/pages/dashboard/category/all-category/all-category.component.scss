@@ -71,3 +71,21 @@ button {
 button:hover {
   background: #ed3350;
 }
+
+.form-container {
+  width: 284px;
+}
+
+input {
+  margin-top: 10px;
+  border-radius: 5px !important;
+  outline: none;
+  padding: 10px;
+  border: 1px solid #c4c2c2;
+  width: 92%;
+}
+
+.mat-radio-label-content
+{
+  margin-right: 20px;
+}

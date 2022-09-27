@@ -6,5 +6,5 @@ export interface CategoryI
   name:string,
   description:string,
   status:boolean,
-  photo:PhotoI
+  photo?:PhotoI
 }

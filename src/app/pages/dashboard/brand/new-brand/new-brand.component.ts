@@ -3,29 +3,29 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { finalize } from 'rxjs';
-import { CategoryI } from 'src/app/interfaces/category.interface';
+import { BrandI } from 'src/app/interfaces/brand.interface';
 import { AlertsService } from 'src/app/services/alerts.service';
-import { CategoryService } from 'src/app/services/category.service';
+import { BrandService } from 'src/app/services/brand.service';
 import Swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'app-new-category',
-  templateUrl: './new-category.component.html',
-  styleUrls: ['./new-category.component.scss']
+  selector: 'app-new-brand',
+  templateUrl: './new-brand.component.html',
+  styleUrls: ['./new-brand.component.scss']
 })
-export class NewCategoryComponent implements OnInit {
+export class NewBrandComponent implements OnInit {
 
   labelPosition: 'false' | 'true' = 'true';
     
 
-  categoryForm:FormGroup;
+  brandForm:FormGroup;
   formSubmited:boolean = false;
 
   photo:File[]=[];
   previsualizacionImgUpdate: string
 
-  categoryToEdit:CategoryI;
+  brandToEdit:BrandI;
   dimensiones:any={
     maxWidth:2500,
     minWidth:200,
@@ -37,7 +37,7 @@ export class NewCategoryComponent implements OnInit {
   constructor(
     private formBuilder:FormBuilder,
     private alertsService: AlertsService,
-    private categoryService: CategoryService,
+    private brandService: BrandService,
     private router: Router,
     private ngxSpinnerService: NgxSpinnerService,
     private changes:ChangeDetectorRef,
@@ -45,14 +45,14 @@ export class NewCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.categoryToEdit = history.state?.element;
-    if(this.categoryToEdit){
-      this.setEditCategory();
+    this.brandToEdit = history.state?.element;
+    if(this.brandToEdit){
+      this.setEditBrand();
     }
   }
 
   getErrorMessageName(){
-    const name = this.categoryForm.get('name');
+    const name = this.brandForm.get('name');
 
     if(name.hasError('required')){
       return 'El nombre es requerido';
@@ -62,7 +62,7 @@ export class NewCategoryComponent implements OnInit {
   }
 
   getErrorMessageDescription(){
-    const description = this.categoryForm.get('description');
+    const description = this.brandForm.get('description');
 
     if(description.hasError('required')){
       return 'La descripción es requerida';
@@ -72,7 +72,7 @@ export class NewCategoryComponent implements OnInit {
   }
 
   getErrorMessageStatus(){
-    const status = this.categoryForm.get('status');
+    const status = this.brandForm.get('status');
 
     if(status.hasError('required')){
       return 'El estado es necesario';
@@ -82,17 +82,17 @@ export class NewCategoryComponent implements OnInit {
   }
 
   createForm(){
-    this.categoryForm = this.formBuilder.group({
+    this.brandForm = this.formBuilder.group({
       _id:[null,[Validators.required]],
       name:['',[Validators.required]],
       description:['',Validators.required],
       status:[true,[Validators.required]]
     });
 
-    this.categoryForm.get('_id').disable();
+    this.brandForm.get('_id').disable();
   }
 
-  async registerCategory(){
+  async registerBrand(){
     this.formSubmited =true;
 
     if(this.photo.length==0){
@@ -100,30 +100,30 @@ export class NewCategoryComponent implements OnInit {
       return;
     }
 
-    if(this.categoryForm.invalid){
+    if(this.brandForm.invalid){
       return;
     }
 
-    const categoryData = new FormData();
-    const data = this.categoryForm.value;
+    const brandData = new FormData();
+    const data = this.brandForm.value;
 
-    categoryData.append('name',data.name);
-    categoryData.append('description',data.description);
-    categoryData.append('status',data.status);
-    categoryData.append('files',this.photo[0]);
+    brandData.append('name',data.name);
+    brandData.append('description',data.description);
+    brandData.append('status',data.status);
+    brandData.append('files',this.photo[0]);
 
-    console.log(this.categoryForm.value)
+    console.log(this.brandForm.value)
     console.log(this.photo)
     await this.ngxSpinnerService.show('generalSpinner');
-    this.categoryService.registerCategory(categoryData).pipe(
+    this.brandService.registerBrand(brandData).pipe(
       finalize(async()=>await this.ngxSpinnerService.hide('generalSpinner'))
     ).subscribe({
       next:(res:any)=>{
         this.alertsService.toastMixin(res.message,'success');
-        this.categoryForm.reset();
+        this.brandForm.reset();
         this.photo = []
         this.formSubmited=false;
-        this.router.navigate(['/dashboard/category/all-category'],{replaceUrl:true})
+        this.router.navigate(['/dashboard/brands/all-brands'],{replaceUrl:true})
       },
       error:(e:any)=>{
         this.alertsService.toastMixin(e.error.message,'error');
@@ -132,29 +132,30 @@ export class NewCategoryComponent implements OnInit {
   }
 
 
-  async editCategory(){
+  async editBrand(){
     this.formSubmited = true;
-    if(this.categoryForm.valid){
+    if(this.brandForm.valid){
 
-      const data = this.categoryForm.value;
-      data.status = this.categoryToEdit.status
-
-      this.categoryToEdit = {
-        _id: this.categoryToEdit._id,
+      const data = this.brandForm.value;
+      console.log(this.brandForm.value)
+      data.status = this.brandToEdit.status
+      console.log(data.status)
+      this.brandToEdit = {
+        _id: this.brandToEdit._id,
         name: data.name,
         description: data.description,
         status: data.status
       }
 
       await this.ngxSpinnerService.show('generalSpinner');
-      this.categoryService.editCategory(this.categoryToEdit).pipe(
+      this.brandService.editBrand(this.brandToEdit).pipe(
         finalize(async()=>await this.ngxSpinnerService.hide('generalSpinner'))
       ).subscribe({
         next:(res)=>{
           this.alertsService.toastMixin(res['message'],'success');
-          this.categoryForm.reset();
+          this.brandForm.reset();
           this.formSubmited = false;
-          this.router.navigate(['/dashboard/category/all-category'],{replaceUrl:true})
+          this.router.navigate(['/dashboard/brands/all-brands'],{replaceUrl:true})
         },
         error:(e)=>{
           this.alertsService.toastMixin(e['error']['message'],'error');
@@ -163,13 +164,12 @@ export class NewCategoryComponent implements OnInit {
     }
   }
 
-  setEditCategory(){
-    this.categoryForm.get('_id').enable();
-    this.categoryForm.get('status').disable();
+  setEditBrand(){
+    this.brandForm.get('_id').enable();
+    this.brandForm.get('status').disable();
 
-    this.categoryForm.patchValue(this.categoryToEdit);
+    this.brandForm.patchValue(this.brandToEdit);
   }
-
 
   async changePhoto(){
     const { value: file } = await Swal.fire({
@@ -192,7 +192,7 @@ export class NewCategoryComponent implements OnInit {
           confirmButtonText:'Continuar'
         });
 
-        const {result} = await this.alertsService.confirmDialogWithModals('Info.','¿Desea actualizar la imagen de la categoria?','question');
+        const {result} = await this.alertsService.confirmDialogWithModals('Info.','¿Desea actualizar la imagen de la marca?','question');
 
       if(result.isConfirmed){
 
@@ -201,13 +201,14 @@ export class NewCategoryComponent implements OnInit {
         const formData = new FormData();
         formData.append('files',file);
 
-        this.categoryService.uploadPhoto(this.categoryToEdit._id,formData).pipe(
+        this.brandService.uploadPhoto(this.brandToEdit._id,formData).pipe(
           finalize(async()=>{
             await this.ngxSpinnerService.hide('generalSpinner');
           })
         ).subscribe({
           next:(res:any)=>{
-            this.categoryToEdit.photo[0] = res.photo;
+            console.log(res.photo)
+            this.brandToEdit.photo[0] = res.photo;
             this.alertsService.toastMixin(res.message,'success');
           },
           error:(e:any)=>{
@@ -219,5 +220,5 @@ export class NewCategoryComponent implements OnInit {
       reader.readAsDataURL(file);
     }
   }
-
 }
+

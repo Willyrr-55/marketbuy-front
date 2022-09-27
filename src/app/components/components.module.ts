@@ -12,12 +12,14 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './product/product.component';
 import { SwiperModule } from 'swiper/angular';
+import { DropzoneComponent } from './dropzone/dropzone.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { RouterModule } from '@angular/router';
 
 const components = [
   SwiperComponent,
   CardProductComponent,
-
+  DropzoneComponent,
   ProductComponent,
   SearchInputComponent
 ]
@@ -35,6 +37,7 @@ const components = [
     FlexLayoutModule,
     MaterialModule,
     SwiperModule,
+    NgxDropzoneModule,
     RouterModule
   ],
   exports:[

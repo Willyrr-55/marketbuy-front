@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ComponentsModule } from '../components/components.module';
 import { MaterialModule } from '../material/material.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     MaterialModule,
     ComponentsModule,
-    NgxPermissionsModule
+    NgxPermissionsModule,
+    RouterModule
   ],
   exports:[
     FooterComponent,

@@ -27,8 +27,9 @@ export class HomeComponent implements OnInit {
   //   console.log('slide change');
   // }
 
+
+
   getProducts(){
-    console.log('Realizando consulta')
     this.productService.getProducts().subscribe({
       next:(res:any)=>{
         this.products = res;

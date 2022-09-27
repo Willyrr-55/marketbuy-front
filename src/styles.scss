@@ -11,7 +11,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 
-.container {
+.container-for-dashboard {
   width: 90%;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -33,7 +33,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   align-items: center;
   width: 100vw;
   height: 80px;
-  background-color: #e66e6e;
+  background-color: #ed3350;
   color: #fff;
 }
 
@@ -87,7 +87,7 @@ input {
 }
 
 .mat-tab-body{
-  height: 76rem;
+  // height: 76rem;
 }
 
 .tab-home{

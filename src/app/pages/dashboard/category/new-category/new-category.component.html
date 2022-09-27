@@ -1,7 +1,7 @@
 <div class=" title-container">
       <h3>{{categoryToEdit?'Editar':'Nueva'}} Categoria</h3>
 </div>
-<div class="container">
+<div class="container-for-dashboard ">
     <form [formGroup]="categoryForm" (ngSubmit)="categoryToEdit?editCategory():registerCategory()" >
       <div fxLayout="row" fxLayout.xs="column" >
             <div fxFlex="40"> 

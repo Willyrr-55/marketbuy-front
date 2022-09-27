@@ -6,10 +6,16 @@ export interface ProductI
   _id?:string,
   name:string,
   description:string,
-  photos:any[],
+  photos:PhotoProductI[],
   price:number,
   stock:number,
   category:CategoryI,
   brand:BrandI,
   status:boolean,
+}
+
+export interface PhotoProductI {
+  url: string;
+  asset_id: string;
+  public_id?: 'string';
 }

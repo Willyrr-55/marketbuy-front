@@ -1,3 +1,7 @@
+.container-table {
+  padding: 10px;
+}
+
 table {
   width: 100%;
 }
@@ -5,4 +9,65 @@ table {
 .mat-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+.status {
+  border-radius: 5px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 84%;
+  margin: 13px auto;
+  height: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.status_activa {
+  background-color: #483084;
+}
+
+.status_desactiva {
+  background-color: #ed3350;
+}
+
+td {
+  min-width: 100px
+}
+
+th {
+  text-align: center !important;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  width: 300px;
+  margin-bottom: 15px
+}
+img {
+ width: 100%;
+}
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px; 
+  height: 200px;
+  margin: 6px auto 16px;
+}
+
+button {
+  background: #e66e6e;
+  color: #fff;
+}
+
+button:hover {
+  background: #ed3350;
 }

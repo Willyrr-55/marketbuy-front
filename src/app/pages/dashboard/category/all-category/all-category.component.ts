@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import {MatTableDataSource} from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { finalize } from 'rxjs';
@@ -13,17 +14,40 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class AllCategoryComponent implements OnInit {
 
+  labelStatus: 'true' |'false' | '' = '' ;
+  labelStrign: 'description'|'id' | 'name' = 'name';
+
   displayedColumns: string[] = ['id', 'name', 'photo', 'description', 'status','opciones'];
   dataSource = new MatTableDataSource([]);
 
   categories: CategoryI[]
+  category: CategoryI
+  
+  search:string = '';
+  status:string = 'true'
  
+  filterForm: FormGroup
+
   constructor(private categoryService: CategoryService,
     private alertsService: AlertsService,
-    private ngxSpinnerService: NgxSpinnerService
+    private ngxSpinnerService: NgxSpinnerService,
+    private formBuilder:FormBuilder,
     )  { }
 
   ngOnInit(): void {
+    this.createForm();
+    // this.getCategories()
+  }
+
+  createForm(){
+    this.filterForm = this.formBuilder.group({
+      _id:[''],
+      name:[''],
+      description:[''],
+      status:[''],
+      undefined:['']
+    });
+
     this.getCategories()
   }
 
@@ -33,13 +57,22 @@ export class AllCategoryComponent implements OnInit {
   }
 
   getCategories(){
-
-    this.categoryService.getCategories().subscribe({
+    // console.log(this.filterForm.value)
+    let data = this.filterForm.value
+    this.category = {
+      _id: data._id ,
+      name:data.name,
+      description: data.description,
+      status: data.status
+    }
+    console.log(this.category)
+    this.categoryService.filterCategories(this.category).subscribe({
       next:(res:any)=>{
        this.categories = res
        this.dataSource = new MatTableDataSource(this.categories);
        console.log(this.categories)
-      }
+      },
+      error: (error) => console.log(error)
     })
   }
   

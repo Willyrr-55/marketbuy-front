@@ -14,6 +14,7 @@ import { ProductComponent } from './product/product.component';
 import { SwiperModule } from 'swiper/angular';
 import { DropzoneComponent } from './dropzone/dropzone.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { RouterModule } from '@angular/router';
 
 const components = [
   SwiperComponent,
@@ -36,7 +37,8 @@ const components = [
     FlexLayoutModule,
     MaterialModule,
     SwiperModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    RouterModule
   ],
   exports:[
     components

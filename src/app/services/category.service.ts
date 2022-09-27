@@ -33,6 +33,15 @@ export class CategoryService {
   uploadPhoto(id:string,data:FormData){
     return this.httpClient.put(`${baseurlapi}/changePhoto?id=${id}`,data)
   }
+
+  filterCategories(category:CategoryI){
+    if(category._id){
+      return this.httpClient.get(`${baseurlapi}/filterCategories?_id=${category._id}&name=${category.name}&description=${category.description}&status=${category.status}`);
+    }else{
+      return this.httpClient.get(`${baseurlapi}/filterCategories?name=${category.name}&description=${category.description}&status=${category.status}`);
+    }
+
+  }
   
 }
 

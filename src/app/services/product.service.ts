@@ -23,8 +23,8 @@ export class ProductService {
     return this.httpClient.get(`${baseurlapi}/getProducts`);
   }
 
-  getDetailProduct(idProduct:string):Observable<ProductI>{
-    return this.httpClient.get<ProductI>(`${baseurlapi}/getDetailProduct`,{params:{idProduct}})
+  getDetailProduct(id:string):Observable<ProductI>{
+    return this.httpClient.get<ProductI>(`${baseurlapi}/getProduct/${id}`)
   }
 
 }

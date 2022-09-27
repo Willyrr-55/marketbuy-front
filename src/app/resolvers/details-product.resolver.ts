@@ -13,7 +13,6 @@ import { catchError } from 'rxjs/operators';
 })
 export class DetailsProductResolver implements Resolve<ProductI> {
 
-
   constructor(private productService: ProductService,private router: Router){}
 
   resolve(route: ActivatedRouteSnapshot): Observable<ProductI> {

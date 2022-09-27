@@ -1,37 +1,63 @@
 <header>
 
-  <mat-toolbar >
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+<div>
+  <mat-toolbar  class="menu-container-res">
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
-    </button>
-    <span>MarcketBuy</span>
-    <span class="example-spacer" >
+    </button> -->
+      <span>MarcketBuy</span>
+      <span class="example-spacer search" >
+        <app-search-input
+              style=" width: 80%;"
+              [placeholder]="'Buscar productos'"
+            ></app-search-input>
+      </span>
+
+      <button *ngxPermissionsOnly="['no-auth']" (click)="authModal()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>person</mat-icon>
+      </button>
+
+      <ng-container *ngxPermissionsExcept="['no-auth']" >
+
+        <ng-container *ngIf="(authService.currentUser$ | async) as user">
+            <div class="menu">  
+              <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                Hola, {{user.full_name}}
+              </button>
+              <mat-menu #menu="matMenu">
+                <button (click)="authService.logout()" mat-menu-item>
+                  <span>Cerrar sesión</span>
+                </button>
+              </mat-menu>
+            </div>
+
+            <div class="menu-res" >
+                <button  mat-icon-butto mat-menu-item [matMenuTriggerFor]="matMenuResponsive" style="padding: 0px">
+                  <mat-icon>person</mat-icon>
+                </button>
+                <mat-menu  #matMenuResponsive="matMenu" >
+                  <div class="menu_content">
+                    <span >  Hola, {{user.full_name}}</span>
+                    <button (click)="authService.logout()">
+                      <span>Cerrar sesión</span>
+                    </button>
+                  </div>
+                </mat-menu>   
+              </div>
+          </ng-container>
+      </ng-container>
+  </mat-toolbar>
+  <mat-toolbar class="search-res">
+    <span class="example-spacer " >
       <app-search-input
-            style=" width: 80%;"
+            style=" width: 100%;"
             [placeholder]="'Buscar productos'"
           ></app-search-input>
     </span>
-
-    <button *ngxPermissionsOnly="['no-auth']" (click)="authModal()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>person</mat-icon>
-    </button>
-
-    <ng-container *ngxPermissionsExcept="['no-auth']">
-      <ng-container *ngIf="(authService.currentUser$ | async) as user">
-        <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          Hola, {{user.full_name}}
-        </button>
-        <mat-menu #menu="matMenu">
-          <button (click)="authService.logout()" mat-menu-item>
-            <span>Cerrar sesión</span>
-          </button>
-        </mat-menu>
-      </ng-container>
-    </ng-container>
-
   </mat-toolbar>
+</div>
 
-  <mat-toolbar style="height: 30px;">
+  <mat-toolbar style="height: 46px;">
     <button mat-button routerLink="''">Productos</button>
 
     <button *ngxPermissionsOnly="['admin']" mat-menu-item [matMenuTriggerFor]="DashboardMenu" style="width: 100px; height: 36px; line-height: 0px;">Dashboard</button>

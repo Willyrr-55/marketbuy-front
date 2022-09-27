@@ -18,6 +18,15 @@
   display: none;
 }
 
+.logo{
+  text-decoration: none;
+  color: black;
+  span{
+    font-weight: 600;
+    font-size: 2rem;
+  }
+}
+
 @media (max-width: 650px){
   .menu-res {
     display: block;
@@ -26,7 +35,7 @@
   .menu {
     display: none;
   }
-  
+
 }
 
 .menu_content {
@@ -49,12 +58,12 @@
     display: flex;
     justify-content: space-between;
   }
-  
+
   .search {
     display: none;
   }
   .search-res {
     display: flex;
   }
-  
+
 }

@@ -61,7 +61,71 @@
         </div>
 
         <!-- Product details-->
-        <div class="col-lg-5 pt-4 pt-lg-0"></div>
+        <div class="col-lg-5 pt-4 pt-lg-0">
+          <mat-card class="example-card" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px 2px, rgba(0, 0, 0, 0.06) 0px 2px 4px 1px; border-radius: 10px;">
+            <!-- <mat-card-header> -->
+              <mat-card-title>{{product.name}}</mat-card-title>
+              <mat-card-subtitle style="margin-top: 9px; margin-bottom: 10px;">de <span style="color:#2F7EFD;">{{product.brand.name}}</span></mat-card-subtitle>
+            <!-- </mat-card-header> -->
+            <mat-divider inset style="margin: 20px 0;"></mat-divider>
+            <mat-card-content>
+              <p>
+               {{product.description}}
+              </p>
+              <mat-divider inset style="margin: 20px 0;"></mat-divider>
+              <div class="content-detail-card">
+                <div>
+                  <span style="color: #37AE61;">En stock: {{product.stock}}</span>
+                  <p class="price-detail">{{product.price | currency}}</p>
+                </div>
+
+                <div style="display: flex;">
+                  <mat-divider [vertical]="true" style="min-height:100px; margin-right: 1.2rem;" ></mat-divider>
+                  <div>
+                    <span style="display: flex; align-items:center;">¡Obtén tasa cero!<mat-icon style="margin-left: .5rem;">info</mat-icon></span>
+                    <!-- <div> -->
+                      <p > <span class="price-detail">{{(product.price/3) | currency}}</span> /Mensual</p>
+                      <ng-select appearance="outline" [searchable]="false" [clearable]="false" labelForId="heroId">
+                        <ng-option value="batman">
+                          3 meses
+                        </ng-option>
+                        <ng-option value="spidey">
+                          6 meses
+                        </ng-option>
+                        <ng-option value="thor">
+                          12 meses
+                        </ng-option>
+                    </ng-select>
+                    <!-- </div> -->
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div style="margin: 20px 0;">
+                <input type="number" min="1" class="input-quantity" placeholder="Cantidad">
+                <button mat-flat-button color="primary" style="width: 73%;">Agregar al carrito</button>
+              </div>
+
+              <mat-divider inset style="margin: 20px 0;"></mat-divider>
+              <div class="footer-card-detail" >
+                <div style="display:flex; color: #113972;">
+                   <mat-icon>motorcycle</mat-icon><h4 style="margin: 0; font-weight: 500;">Llega: 05 de nov, 2022 - 08 de nov, 2022</h4>
+                </div>
+
+                <p>Recibe tu producto directo hasta la puerta de tu casa. Realiza el pedido en
+                  </p>
+              </div>
+            </mat-card-content>
+
+            <!-- <mat-card-actions>
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions> -->
+          </mat-card>
+
+        </div>
       </div>
     </div>
   </div>

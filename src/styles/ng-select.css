@@ -1,0 +1,16 @@
+.form-control .ng-select-container{
+  border: none;
+  outline: none;
+}
+
+.form-control .ng-select-container:focus{
+  outline: none;
+}
+
+.form-control .ng-select-container:hover{
+  box-shadow: none
+}
+
+.form-control .ng-select-container .ng-value-label .badge{
+  display: none;
+}

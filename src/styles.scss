@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/swiper/swiper.min.css';
 @import "~ngx-toastr/toastr";
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import url('./styles/ng-select.css');
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -86,9 +88,7 @@ input {
   justify-content: space-between;
 }
 
-.mat-tab-body{
-  height: 76rem;
-}
+
 
 .tab-home{
   margin: 0 !important;

@@ -22,6 +22,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [],
@@ -52,7 +53,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatMenuModule,
     MatSnackBarModule,
     MatTooltipModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDividerModule
 
   ]
 })

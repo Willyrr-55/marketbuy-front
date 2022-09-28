@@ -34,9 +34,9 @@ html * {
   margin-left: calc(var(--bs-gutter-x) * -.5);
 }
 
-.example-card {
-  max-width: 400px;
-}
+// .example-card {
+//   max-width: 400px;
+// }
 
 
 .product-gallery{
@@ -114,6 +114,37 @@ html * {
 .product-gallery-thumblist-item.active {
   border-color: #2b2c36;
 }
+.content-detail-card{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.input-quantity{
+  width: 25%;
+  border: solid 2px #f4f4f4;
+  border-radius: 5px !important;
+  height: 2.2rem;
+  margin-right: 0.5rem;
+  padding: 1rem;
+}
+
+.price-detail{
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  color: #3F51B5;
+  margin-right: 0.5rem;
+}
+
+.footer-card-detail{
+  margin-top: 10px;
+  background: #F4F4F4;
+  padding: 1rem;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+
 
 @media (min-width: 500px){
   .product-gallery-preview.order-sm-2 {

@@ -7,6 +7,7 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
 import { ProductListComponent } from './product-list/product-list.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CommonModule,
     ProductsRoutingModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgSelectModule
   ]
 })
 export class ProductsModule { }

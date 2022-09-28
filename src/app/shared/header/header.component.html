@@ -5,7 +5,9 @@
     <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button> -->
-      <span>MarcketBuy</span>
+      <a class="logo" routerLink="/">
+        <span>MarcketBuy</span>
+      </a>
       <span class="example-spacer search" >
         <app-search-input
               style=" width: 80%;"
@@ -20,7 +22,7 @@
       <ng-container *ngxPermissionsExcept="['no-auth']" >
 
         <ng-container *ngIf="(authService.currentUser$ | async) as user">
-            <div class="menu">  
+            <div class="menu">
               <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                 Hola, {{user.full_name}}
               </button>
@@ -42,7 +44,7 @@
                       <span>Cerrar sesión</span>
                     </button>
                   </div>
-                </mat-menu>   
+                </mat-menu>
               </div>
           </ng-container>
       </ng-container>

@@ -15,7 +15,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 90%;
   padding-top: 30px;
   padding-bottom: 30px;
-  margin: 0px auto;  
+  margin: 0px auto;
 }
 
 .is-invalid {
@@ -50,7 +50,7 @@ input {
   border-radius: 32px !important;
 }
 // .autocomplete-container {
-//   width: 80% !important; 
+//   width: 80% !important;
 //   margin: 0px auto;
 // }
 
@@ -83,11 +83,11 @@ input {
 }
 
 .mat-tab-labels{
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .mat-tab-body{
-  // height: 76rem;
+  height: 76rem;
 }
 
 .tab-home{

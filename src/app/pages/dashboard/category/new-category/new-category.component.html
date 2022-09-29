@@ -14,14 +14,21 @@
                         </div>                  
                   </div>
             </div>
-            <div class="input-container" fxFlex="60">
-                  <input [class]="formSubmited && categoryForm.get('name').invalid?'is-invalid':''" formControlName="name" type="text" placeholder="Nombre de la categoria">   
-                  <div *ngIf="formSubmited && categoryForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
+           <div>
+                  <div class="input-container" fxFlex="60">
+                        <input [class]="formSubmited && categoryForm.get('name').invalid?'is-invalid':''" formControlName="name" type="text" placeholder="Nombre de la categoria">   
+                        <div *ngIf="formSubmited && categoryForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
 
-                  <textarea [class]="formSubmited && categoryForm.get('description').invalid?'is-invalid':''" formControlName="description" class="descripcion" type="text" placeholder="Descripción de la categoría"></textarea>
+                       
+                  </div>
+                  <div class="input-container" fxFlex="60">
+
+                        <textarea [class]="formSubmited && categoryForm.get('description').invalid?'is-invalid':''" formControlName="description" class="descripcion" type="text" placeholder="Descripción de la categoría"></textarea>
                         <div *ngIf="formSubmited && categoryForm.get('description').invalid" class="invalid-feedback">
-                        {{getErrorMessageDescription()}}</div>
-            </div>
+                              {{getErrorMessageDescription()}}
+                        </div>
+                  </div>
+           </div>
       </div>
  
                 

@@ -1,0 +1,17 @@
+
+<ng-select
+placeholder="Elegir categoria"
+[loading]="loading"
+[items]="categories"
+[notFoundText]="'No hay resultados'"
+[(ngModel)]="categorySelected"
+(ngModelChange)="selectedCategory()"
+bindLabel="name"
+bindValue="_id"
+appendTo="body"
+[ngClass]="class"
+>
+
+</ng-select>
+
+

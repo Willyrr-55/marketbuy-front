@@ -27,4 +27,16 @@ export class ProductService {
     return this.httpClient.get<ProductI>(`${baseurlapi}/getProduct/${id}`)
   }
 
+  registerProduct(productData: FormData){
+    return this.httpClient.post<ProductI>(`${baseurlapi}/createProduct`, productData)
+  }
+
+  editProduct(productData: ProductI){
+    return  this.httpClient.put<ProductI>(`${baseurlapi}/updateProduct`, productData)
+  }
+
+  uploadPhoto(id: string,photo: FormData){
+    return this.httpClient.put<ProductI>(`${baseurlapi}/registerProduct`, photo)
+  }
+
 }

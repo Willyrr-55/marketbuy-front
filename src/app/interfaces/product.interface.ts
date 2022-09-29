@@ -6,7 +6,7 @@ export interface ProductI
   _id?:string,
   name:string,
   description:string,
-  photos:PhotoProductI[],
+  photos?:PhotoProductI[],
   price:number,
   stock:number,
   category:CategoryI,

@@ -67,14 +67,20 @@
 
         <button mat-menu-item [matMenuTriggerFor]="CategoriaMenu">Categoria</button>
           <mat-menu #CategoriaMenu="matMenu" xPosition="before">
-            <a mat-menu-item  routerLink="/dashboard/category/new-category" >Nueva categoria</a>
-            <a mat-menu-item routerLink="/dashboard/category/all-category" >Todas las categorias</a>
+            <a mat-menu-item  routerLink="/dashboard/options/category/new-category" >Nueva categoria</a>
+            <a mat-menu-item routerLink="/dashboard/options/category/all-category" >Todas las categorias</a>
           </mat-menu>
 
           <button mat-menu-item [matMenuTriggerFor]="MarcaMenu">Marca</button>
           <mat-menu #MarcaMenu="matMenu" xPosition="before">
-            <a mat-menu-item  routerLink="/dashboard/brands/new-brand" >Nueva marca</a>
-            <a mat-menu-item routerLink="/dashboard/brands/all-brands" >Todas las marcas</a>
+            <a mat-menu-item  routerLink="/dashboard/options/brands/new-brand" >Nueva marca</a>
+            <a mat-menu-item routerLink="/dashboard/options/brands/all-brands" >Todas las marcas</a>
+          </mat-menu>
+
+          <button mat-menu-item [matMenuTriggerFor]="ProductoMenu">Producto</button>
+          <mat-menu #ProductoMenu="matMenu" xPosition="before">
+            <a mat-menu-item  routerLink="/dashboard/options/products/new-product" >Nuevo producto</a>
+            <a mat-menu-item routerLink="/dashboard/options/products/all-products" >Todas las productos</a>
           </mat-menu>
 
       </mat-menu>

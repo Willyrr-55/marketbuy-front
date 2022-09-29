@@ -1,0 +1,30 @@
+<div class=" title-container">
+    <h3>Todos los Producto</h3>
+</div>
+
+<div class="container-for-dashboard ">
+            <!-- PRODUCTS CARDS -->
+        <div
+        style="margin: 0 !important"
+        fxLayout="row wrap"
+        fxLayout.xs="column"
+        fxLayoutAlign="center"
+        fxLayoutGap="20px grid"
+        class="tab-home"
+        >
+        <div
+        fxFlex="20%"
+        fxFlex.xs="100%"
+        fxFlex.sm="30%"
+        fxFlex.md="25%"
+        fxFlex.lg="20%"
+        *ngFor="let product of products"
+        >
+        <!-- <app-product [product]="product"></app-product>
+            <br><br> -->
+        <app-card-product [product]="product"></app-card-product>
+        </div>
+    </div>
+</div>
+
+    

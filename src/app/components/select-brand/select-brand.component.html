@@ -1,0 +1,17 @@
+
+<ng-select
+placeholder="Elegir Marca"
+[loading]="loading"
+[items]="brands"
+[notFoundText]="'No hay resultados'"
+[(ngModel)]="brandSelected"
+(ngModelChange)="selectedStatus()"
+bindLabel="name"
+bindValue="_id"
+appendTo="body"
+[ngClass]="class"
+>
+    
+</ng-select>
+
+

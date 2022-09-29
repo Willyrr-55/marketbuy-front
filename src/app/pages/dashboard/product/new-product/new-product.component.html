@@ -1,0 +1,100 @@
+<div class=" title-container">
+    <h3>{{productToEdit?'Editar':'Nuevo'}} Producto</h3>
+</div>
+
+<div class="container-for-dashboard ">
+  <form  [formGroup]="productForm" (ngSubmit)="productToEdit?editProduct():registerProduct()" >
+        <div fxLayout="column" >
+            <div fxFlex="40"> 
+                <div class="column">
+                    <label for="">Imagenes de el producto</label>
+                    <span>Puede ingresar hasta 5 imagenes.</span>
+                </div>
+                <div>
+                    <app-upload-files
+                        [class]="
+                        formSubmited && photos.length == 0 && !productToEdit
+                            ? 'is-invalid'
+                            : ''
+                        "
+                        label="Suelta ó seleccionar la imágen para subirla"
+                        accept=".png, .jpg, .jpeg"
+                        [files]="photos"
+                        (multipleImages)="photos = $event">
+                    </app-upload-files>
+                    <div
+                        *ngIf="formSubmited && photos.length == 0 && !productToEdit"
+                        class="invalid-feedback"
+                    >
+                        {{ getErrorMessageImgProduct() }}
+                    </div>           
+                </div>
+            </div>
+            <div class="container-input" >
+                <div class="input-container" >
+                    <input [class]="formSubmited && productForm.get('name').invalid?'is-invalid':''" formControlName="name" type="text" placeholder="Nombre de el producto">   
+                    <div *ngIf="formSubmited && productForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
+                    <div class="row">
+                        <div class="row-element mr">
+                            <label for="">Precio</label>
+                            <input [class]="formSubmited && productForm.get('name').invalid?'is-invalid':''" formControlName="price" type="number" placeholder="Precio">   
+                            <div *ngIf="formSubmited && productForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
+                        </div>
+                        <div class="row-element ml">
+                            <label for="">Stock</label>
+                            <input [class]="formSubmited && productForm.get('name').invalid?'is-invalid':''" formControlName="stock" type="number" placeholder="Stock">   
+                             <div *ngIf="formSubmited && productForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
+                        </div>
+                    </div>    
+                    <div class="row">
+                        <div class="row-element mr">
+                           <app-select-category        
+                                [categorySelected]="idCategory"
+                                (changeCategory)="setCategory($event)"
+                            >
+                            </app-select-category>
+                            <div *ngIf="formSubmited && productForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
+                        </div>
+                        <div class="row-element ml">
+                            <app-select-brand
+                                [brandSelected]="idBrand"
+                                (changeBrand)="setBrand($event)"
+                            >
+                            </app-select-brand>
+                            <div *ngIf="formSubmited && productForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
+                        </div>
+                    </div>    
+                </div>
+
+                <div class="input-container text-area-container"  >
+                    <textarea [class]="formSubmited && productForm.get('description').invalid?'is-invalid':''" formControlName="description" class="descripcion"  type="text" placeholder="Descripción de el producto"></textarea>
+                    <div *ngIf="formSubmited && productForm.get('description').invalid" class="invalid-feedback">
+                        {{getErrorMessageDescription()}}
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+
+                
+        <section class="example-section estado" *ngIf="!productToEdit">
+            <div>
+                <label class="example-margin">Estado:</label>
+                <mat-radio-group formControlName="status" [(ngModel)]="labelPosition" >
+                        <mat-radio-button class="example-margin" mat-accent value="true">Activar</mat-radio-button>
+                        <mat-radio-button class="example-margin"  value="false">Desactivar</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <small style="margin-top: 10px; margin-left: 10px">Desactive si el producto no está en uso.</small>
+            <div *ngIf="formSubmited && productForm.get('status').invalid" class="invalid-feedback">
+                    {{getErrorMessageStatus()}}
+            </div>
+
+        </section>
+        
+        <div fxLayout="row">
+            <button type="submit" fxFlex="100">{{productToEdit?'Editar':'Registrar'}} producto</button>
+        </div>
+  </form>
+ 
+</div>

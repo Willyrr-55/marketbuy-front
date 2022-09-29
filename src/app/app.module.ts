@@ -16,11 +16,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import localEs from '@angular/common/locales/es-US';
 import { registerLocaleData } from '@angular/common';
+
 registerLocaleData(localEs);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

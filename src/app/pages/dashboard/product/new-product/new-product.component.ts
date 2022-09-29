@@ -133,8 +133,13 @@ export class NewProductComponent implements OnInit {
       return;
     }
 
+    console.log(this.photos)
     const productData = new FormData();
     const data = this.productForm.value;
+
+    this.photos.forEach((photo) => {
+      productData.append('files', photo);
+    })
 
     productData.append('name',data.name);
     productData.append('description',data.description);
@@ -143,7 +148,6 @@ export class NewProductComponent implements OnInit {
     productData.append('price',data.price);
     productData.append('category',data.category);
     productData.append('brand',data.brand);
-    productData.append('files',this.photos[0]);
 
 
     await this.ngxSpinnerService.show('generalSpinner');

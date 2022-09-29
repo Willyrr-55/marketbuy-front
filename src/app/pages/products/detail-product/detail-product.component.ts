@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { ProductI } from 'src/app/interfaces/product.interface';
@@ -13,13 +14,28 @@ export class DetailProductComponent implements OnInit {
   product: ProductI;
   subs: Subscription = new Subscription();
 
+  basePath;
+  heroForm: FormGroup;
+  priceWithQoute:any;
+  // months = [
+  //   {quantity:"3", month:'3 meses'},
+  //   {quantity:"6", month:'6 meses'},
+  //   {quantity:"12", month:'12 meses'},
+  // ]
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private changeDetectorRef: ChangeDetectorRef,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+
+    this.basePath = window.location.host.includes('localhost') ? '' : '/ng-select';
+        this.heroForm = this.formBuilder.group({
+            quantity: '3',
+        });
 
     this.configDetailsProduct();
     this.subs.add(
@@ -33,8 +49,16 @@ export class DetailProductComponent implements OnInit {
         })
     );
 
-    console.log('producto: ')
-    console.log(this.product)
+    const price = (this.product.price/3).toFixed(2)
+    this.priceWithQoute = Number(price)
+    // console.log(typeof())
+
+    this.heroForm.valueChanges.subscribe(x =>
+      {
+        const price = (this.product.price/(x.quantity*1)).toFixed(2);
+        this.priceWithQoute = Number(price)
+      }
+      )
 
   }
 

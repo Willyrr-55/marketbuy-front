@@ -76,7 +76,7 @@
               <div class="content-detail-card">
                 <div>
                   <span style="color: #37AE61;">En stock: {{product.stock}}</span>
-                  <p class="price-detail">{{product.price | currency}}</p>
+                  <p class="price-detail" style="margin-top: 1rem;">{{product.price | currency}}</p>
                 </div>
 
                 <div style="display: flex;">
@@ -84,18 +84,20 @@
                   <div>
                     <span style="display: flex; align-items:center;">¡Obtén tasa cero!<mat-icon style="margin-left: .5rem;">info</mat-icon></span>
                     <!-- <div> -->
-                      <p > <span class="price-detail">{{(product.price/3) | currency}}</span> /Mensual</p>
-                      <ng-select appearance="outline" [searchable]="false" [clearable]="false" labelForId="heroId">
-                        <ng-option value="batman">
-                          3 meses
-                        </ng-option>
-                        <ng-option value="spidey">
-                          6 meses
-                        </ng-option>
-                        <ng-option value="thor">
-                          12 meses
-                        </ng-option>
-                    </ng-select>
+                      <p > <span class="price-detail">{{priceWithQoute | currency}}</span> /Mensual</p>
+                      <form [formGroup]="heroForm">
+                        <ng-select appearance="outline" [searchable]="false" [clearable]="false" labelForId="quantity" formControlName="quantity">
+                          <ng-option value="3">
+                            3 meses
+                          </ng-option>
+                          <ng-option value="6">
+                            6 meses
+                          </ng-option>
+                          <ng-option value="12">
+                            12 meses
+                          </ng-option>
+                        </ng-select>
+                      </form>
                     <!-- </div> -->
                   </div>
 

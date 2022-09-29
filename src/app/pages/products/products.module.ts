@@ -8,6 +8,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ProductsRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    NgSelectModule
+    NgSelectModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductsModule { }

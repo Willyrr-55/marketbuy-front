@@ -20,7 +20,9 @@
       </button>
 
       <ng-container *ngxPermissionsExcept="['no-auth']" >
-
+        <button mat-button aria-label="Favorite" routerLink="/products/wishlist">
+          <mat-icon>favorite</mat-icon>
+        </button>
         <ng-container *ngIf="(authService.currentUser$ | async) as user">
             <div class="menu">
               <button mat-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">

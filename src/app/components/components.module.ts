@@ -35,7 +35,6 @@ const components = [
 @NgModule({
   declarations: [
     components,
-
   ],
   imports: [
     CommonModule,

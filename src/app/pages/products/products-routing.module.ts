@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsProductResolver } from 'src/app/resolvers/details-product.resolver';
 import { DetailProductComponent } from './detail-product/detail-product.component';
+import { ProductListComponent } from './product-list/product-list.component';
 import { ProductsComponent } from './products.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 const routes: Routes = [
   {
@@ -26,7 +28,25 @@ const routes: Routes = [
           ],
         },
         component:DetailProductComponent
-      }
+      },
+        {
+          path: 'wishlist',
+          data: {
+            title: 'Favoritos',
+            breadcrumb: [
+              {
+                label: 'Inicio',
+                url: 'home',
+              },
+              {
+                label: 'Favoritos',
+                url: 'wishlist',
+              },
+            ],
+          },
+          component: WishlistComponent,
+        },
+
     ]
   }
 ];

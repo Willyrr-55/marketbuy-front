@@ -9,13 +9,16 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 @NgModule({
   declarations: [
     ProductsComponent,
     DetailProductComponent,
-    ProductListComponent
+    ProductListComponent,
+    WishlistComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FlexLayoutModule,
     NgSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ComponentsModule
   ]
 })
 export class ProductsModule { }

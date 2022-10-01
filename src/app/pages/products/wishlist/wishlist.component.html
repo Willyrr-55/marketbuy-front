@@ -1,0 +1,50 @@
+<!-- <h2 class="h3 pt-2 pb-4 mb-0 text-center text-sm-start border-bottom">
+  Favorites<span class="badge bg-faded-accent fs-sm text-body align-middle ms-2"
+    >4</span
+  >
+</h2> -->
+<!-- Product-->
+<!-- Toolbar-->
+<div style="text-align: center;">
+  <h2 style="margin: 1rem 0 ;">Tu Wishlist</h2>
+</div>
+
+<ng-container *ngIf="productsCount!=0;else noProducts">
+  <div
+        class="wishlist"
+        fxLayout="row wrap"
+        fxLayout.xs="column"
+        fxLayoutAlign="center"
+        fxLayoutGap="20px grid"
+
+      >
+          <div
+            fxFlex="23%"
+            fxFlex.xs="100%"
+            fxFlex.sm="30%"
+            fxFlex.md="20%"
+            fxFlex.lg="22%"
+            *ngFor="let product of products"
+          >
+      <app-card-product [product]="product"></app-card-product>
+    </div>
+  </div>
+</ng-container>
+<ng-template #noProducts>
+<div  class="row " style="display: block; margin-top: 90px;">
+  <div >
+      <div class="card" style="min-height: 425px;">
+        <p style="text-align: center; margin: 1rem; font-size: 18px; font-weight: 500;">
+          ¡Oh no, aún no has agregado ningún producto a favoritos!
+        </p>
+
+        <p style="text-align: center; margin-top: 3rem;"><strong>Busca y guarda en favorito los productos que te interesen.</strong></p>
+
+        <div style="display: flex; height: 62%; align-items: center; justify-content: center;" class="imgActivity">
+          <img style="width: 230px;" src="../../../../assets/noProducts2.svg" alt="">
+        </div>
+      </div>
+  </div>
+
+</div>
+</ng-template>

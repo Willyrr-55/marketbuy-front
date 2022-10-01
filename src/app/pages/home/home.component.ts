@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { ProductI } from 'src/app/interfaces/product.interface';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -26,8 +27,6 @@ export class HomeComponent implements OnInit {
   // onSlideChange() {
   //   console.log('slide change');
   // }
-
-
 
   getProducts(){
     this.productService.getProducts().subscribe({

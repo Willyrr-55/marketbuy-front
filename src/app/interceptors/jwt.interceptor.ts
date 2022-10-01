@@ -9,7 +9,7 @@ import {
 import { BehaviorSubject, Observable, EMPTY, throwError } from 'rxjs';
 import { catchError, filter, switchMap, take } from 'rxjs/operators';
 // import { AlertsService } from '../services/alerts.service';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../modals/auth-modal/auth.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
@@ -30,7 +30,7 @@ export class JwtInterceptor implements HttpInterceptor {
       if(error instanceof HttpErrorResponse && error.status ===401){
         return this.handle401Error(request,next);
       }else{
-        if(error instanceof HttpErrorResponse && error.status ===400 && error['error']['reLogin']){
+        if(error instanceof HttpErrorResponse && error.status ===400 && error['error']['invalidToken']){
           this.authService.logout();
         }
         return throwError(error);

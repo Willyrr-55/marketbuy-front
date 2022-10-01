@@ -1,4 +1,4 @@
-<div class="ng-autocomplete w-100" [ngClass]="classes">
+<!-- <div class="ng-autocomplete w-100" [ngClass]="classes">
   <form autocomplete="off">
     <ng-autocomplete
       #searchInputComponent
@@ -26,4 +26,34 @@
         </div>
       </ng-template>
   </form>
+</div> -->
+<div class="ng-autocomplete" style="width: 100% !important;display:flex; justify-content: space-between;" [ngClass]="classes">
+  <ng-autocomplete
+  style="flex:1;width: 100% !important;"
+  [historyIdentifier]="'searchProductHistory'"
+  #searchInputComponent
+  [(ngModel)]="searchInput"
+  (keyup.enter)="search()"
+  [debounceTime]="500"
+  historyIdentifier="items"
+  (selected)="selected($event)"
+  (inputCleared)="changeValue('')"
+  (inputChanged)="changeValue($event)"
+  [placeholder]="placeholder"
+  [data]="products"
+  [searchKeyword]="keyboard"
+  [customFilter]="customFilter"
+  [itemTemplate]="itemTemplate">
+  </ng-autocomplete>
+  <ng-template #itemTemplate let-item>
+    <div class="item-search">
+      <ng-container *ngIf="item.photos.length>0">
+        <img [src]="item.photos[0].url" [alt]="item.name">
+      </ng-container>
+      <span style="margin-left: 15px;" [innerHTML]="item.name"></span>
+    </div>
+  </ng-template>
+  <button style="margin-left: 15px;" (click)="search()" mat-mini-fab color="primary" aria-label="Example icon button with a bookmark icon">
+    <mat-icon>search</mat-icon>
+  </button>
 </div>

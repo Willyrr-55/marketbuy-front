@@ -1,3 +1,5 @@
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductComponent } from './../dashboard/product/product.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsProductResolver } from 'src/app/resolvers/details-product.resolver';
@@ -26,6 +28,13 @@ const routes: Routes = [
           ],
         },
         component:DetailProductComponent
+      },
+      {
+        path:'list/:search',
+        data: {
+          title: 'Resultados para'
+        },
+        component:ProductListComponent
       }
     ]
   }

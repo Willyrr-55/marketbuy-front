@@ -19,6 +19,8 @@ import { RouterModule } from '@angular/router';
 import { UploadFilesComponent } from './upload-files/upload-files.component';
 import { SelectCategoryComponent } from './select-category/select-category.component';
 import { SelectBrandComponent } from './select-brand/select-brand.component';
+import { SelectMunicipalityComponent } from './select-municipality/select-municipality.component';
+import { SelectDepartmentComponent } from './select-department/select-department.component';
 
 const components = [
   SwiperComponent,
@@ -29,6 +31,8 @@ const components = [
   UploadFilesComponent,
   SelectCategoryComponent,
   SelectBrandComponent,
+  SelectMunicipalityComponent,
+  SelectDepartmentComponent
 ]
 
 
@@ -47,7 +51,8 @@ const components = [
     SwiperModule,
     NgxDropzoneModule,
     RouterModule,
-    NgSelectModule
+    NgSelectModule,
+
   ],
   exports:[
     components

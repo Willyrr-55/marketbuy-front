@@ -1,12 +1,17 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NgxPermissionsGuard } from 'ngx-permissions';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes:Routes =[
   {
     path:'home',
     pathMatch:'full',
     redirectTo:''
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent
   },
   {
     path:'',

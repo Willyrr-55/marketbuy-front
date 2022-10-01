@@ -1,0 +1,147 @@
+.bg-footer{
+  flex-shrink: 0;
+  background: #2b2d36;
+}
+
+a{
+  text-decoration: none;
+}
+
+.pt-1 {
+  padding-top: 0.25rem!important;
+}
+
+.pt-5 {
+  padding-top: 3rem!important;
+}
+
+.container {
+  width: 100%;
+  --bs-gutter-x: 1.875rem;
+  --bs-gutter-y: 0;
+  padding-right: var(--bs-gutter-x, .9375rem);
+  padding-left: var(--bs-gutter-x, .9375rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.pb-1 {
+  padding-bottom: 0.25rem!important;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem!important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem!important;
+}
+
+.mb-5 {
+  margin-bottom: 3rem!important;
+}
+
+hr:not([size]) {
+  height: 1px;
+}
+
+.widget-title {
+  margin-bottom: 1.125rem;
+  font-size: 1.0625rem;
+  font-weight: 400;
+}
+
+.widget-list-item {
+  margin-bottom: 0.5rem;
+}
+
+.widget-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.widget-list-link {
+  display: block;
+  transition: color .25s ease-in-out;
+  color: #4b566b;
+  font-size: .875rem;
+  font-weight: 400;
+}
+
+.widget-light .widget-list-link {
+  color: #ffffffa6;
+}
+
+.hr-light {
+  color: #ffffff1f;
+}
+
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #172955;
+}
+
+h6{
+  font-size: 1.2rem;
+}
+
+.material-icons {
+  font-size: 2rem !important;
+  margin-right: 1rem !important;
+  color: #F2DA1E;
+}
+
+.text-light {
+  color: #fff!important;
+}
+
+.d-flex {
+  display: flex!important;
+}
+
+
+
+.text-nowrap {
+  white-space: nowrap!important;
+}
+
+.text-center {
+  text-align: center!important;
+}
+
+.text-md-start {
+  text-align: left!important;
+}
+
+.row {
+  --bs-gutter-x: 1.875rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x) * -.5);
+  margin-left: calc(var(--bs-gutter-x) * -.5);
+}
+
+@media (min-width: 500px){
+  .col-sm-6 {
+      flex: 0 0 auto;
+      width: 50%;
+  }
+}
+
+@media (min-width: 768px){
+  .col-md-3 {
+      flex: 0 0 auto;
+      width: 25%;
+  }
+
+  .col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}

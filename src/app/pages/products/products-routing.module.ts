@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DetailsProductResolver } from 'src/app/resolvers/details-product.resolver';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { ProductsComponent } from './products.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,24 @@ const routes: Routes = [
           title: 'Resultados para'
         },
         component:ProductListComponent
-      }
+      },
+      {
+        path: 'wishlist',
+        data: {
+          title: 'Favoritos',
+          breadcrumb: [
+            {
+              label: 'Inicio',
+              url: 'home',
+            },
+            {
+              label: 'Favoritos',
+              url: 'wishlist',
+            },
+          ],
+        },
+        component: WishlistComponent,
+      },
     ]
   }
 ];

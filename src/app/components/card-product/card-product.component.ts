@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductI } from 'src/app/interfaces/product.interface';
 import { AlertsService } from 'src/app/services/alerts.service';
+import { CartService } from 'src/app/services/cart.service';
 import { WishlistService } from 'src/app/services/wishlist.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class CardProductComponent implements OnInit {
   @Input() product:ProductI;
 
   constructor(
+    private cartService: CartService,
     private wishlistService: WishlistService,
     private alertsService: AlertsService,
     private router: Router
@@ -35,5 +37,14 @@ export class CardProductComponent implements OnInit {
   detail(_id:string){
     this.router.navigate(['/products/details/',_id])
   }
+
+
+  addToCard(id: string) {
+
+    this.cartService.AddProductToCart(id);
+
+  }
+
+
 
 }

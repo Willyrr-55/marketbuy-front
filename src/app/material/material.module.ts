@@ -23,6 +23,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [],
@@ -43,6 +44,7 @@ import {MatDividerModule} from '@angular/material/divider';
     MatGridListModule,
     MatInputModule,
     MatListModule,
+    MatStepperModule,
     MatIconModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
@@ -53,8 +55,7 @@ import {MatDividerModule} from '@angular/material/divider';
     MatMenuModule,
     MatSnackBarModule,
     MatTooltipModule,
-    MatFormFieldModule,
-    MatDividerModule
+    MatDividerModule,
 
   ]
 })

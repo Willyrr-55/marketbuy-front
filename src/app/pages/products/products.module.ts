@@ -10,13 +10,15 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 @NgModule({
   declarations: [
     ProductsComponent,
     DetailProductComponent,
-    ProductListComponent
+    ProductListComponent,
+    WishlistComponent
   ],
   imports: [
     CommonModule,

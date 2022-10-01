@@ -40,7 +40,15 @@ export class ProductService {
   }
 
   registerorder(orderData: any){
-    return this.httpClient.post<ProductI>(`/order/createOrder`, orderData)
+    return this.httpClient.post<ProductI>(`${environment.urlApi}/order/createOrder`, orderData)
+  }
+
+  getMunicipalititesByDepartmentComponent(idDepartment:string){
+    return this.httpClient.get(`https://api.cavalierlatam.com/api/order/getMunicipalititesByDepartmentComponent`,{params:{idDepartment}})
+  }
+
+  getDepartmentsComponent(){
+    return this.httpClient.get(`https://api.cavalierlatam.com/api/order/getDepartmentsComponent`)
   }
 
 }

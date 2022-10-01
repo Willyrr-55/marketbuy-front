@@ -1,0 +1,128 @@
+<mat-card
+  style="
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+  "
+  ><mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+
+        <ng-template matStepLabel>Detalles</ng-template>
+        <div fxLayout="row wrap" fxLayoutGap="50px">
+          <mat-form-field style="margin-right: 20px" appearance="fill">
+            <mat-label>Nombres</mat-label>
+            <input formControlName="names" matInput />
+          </mat-form-field>
+          <mat-form-field style="margin-right: 20px" appearance="fill">
+            <mat-label>Apellidos</mat-label>
+            <input formControlName="last_name" matInput />
+          </mat-form-field>
+          <mat-form-field style="margin-right: 20px" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput />
+          </mat-form-field>
+          <mat-form-field style="margin-right: 20px" appearance="fill">
+            <mat-label>Teléfono</mat-label>
+            <input formControlName="phone" matInput />
+          </mat-form-field>
+          <mat-form-field style="margin-right: 20px" appearance="fill">
+            <mat-label>Información adicional</mat-label>
+            <textarea formControlName="aditional_info" matInput></textarea>
+          </mat-form-field>
+          <mat-form-field style="margin-right: 20px" appearance="fill">
+            <mat-label>Departamento</mat-label>
+            <mat-select formControlName="department">
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field style="margin-right: 20px" appearance="fill">
+            <mat-label>Municipio</mat-label>
+
+            <!-- <app-select-municipality
+                [department]="departmentSelected"
+                [municipalitySelected]="municipalitySelected"
+                [formGroup]="firstFormGroup"
+                [showPrice]="false"
+                [formControlNameMunicipality]="'municipality'"
+            ></app-select-municipality> -->
+
+            <mat-select formControlName="municipality">
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Dirección</mat-label>
+            <textarea formControlName="address" matInput></textarea>
+          </mat-form-field>
+        </div>
+
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            placeholder="Last name, First name"
+            formControlName="firstCtrl"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Apellido</mat-label>
+          <input
+            matInput
+            placeholder="Last name, First name"
+            formControlName="firstCtrl"
+            required
+          />
+        </mat-form-field> -->
+        <div>
+          <button
+            [disabled]="firstFormGroup.invalid"
+            color="primary"
+            mat-button
+            (click)="saveData()"
+          >
+            Siguiente
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step label="Pago">
+      <mat-card style="width: 300px; margin: 0 auto">
+        <ngx-paypal [config]="payPalConfig"></ngx-paypal
+      ></mat-card>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <div>
+        <h1>Your order have been created</h1>
+
+        <button color="primary" mat-button routerLink="/">
+          Volver al home
+        </button>
+      </div>
+    </mat-step>
+  </mat-stepper></mat-card
+>
+
+<app-select-department
+[departmentSelected]="departmentSelected"
+(changeDepartmentObject)="filterMunicipalities($event)"
+[formGroup]="firstFormGroup"
+[formControlNameDepartment]="'department'"
+></app-select-department>
+
+<app-select-municipality
+[department]="departmentSelected"
+[municipalitySelected]="municipalitySelected"
+[formGroup]="firstFormGroup"
+[showPrice]="false"
+[formControlNameMunicipality]="'municipality'"
+></app-select-municipality>

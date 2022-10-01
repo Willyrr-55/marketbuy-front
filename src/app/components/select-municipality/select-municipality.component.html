@@ -1,0 +1,3 @@
+<ng-select [notFoundText]="'No hay resultados'" [(ngModel)]="municipalitySelected" (ngModelChange)="selectedMunicipality()">
+  <ng-option *ngFor="let municipality of municipiosFilteres" [value]="municipality.name">{{municipality.name}} {{showPrice?(municipality.shippingPrice | currency):''}}</ng-option>
+</ng-select>

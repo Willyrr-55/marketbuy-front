@@ -8,12 +8,14 @@ import { SwiperModule } from 'swiper/angular';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { MaterialModule } from 'src/app/material/material.module';
 import { ModalsModule } from 'src/app/modals/modals.module';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
     HomeComponent
   ],
   imports: [
+    NgxPayPalModule,
     CommonModule,
     HomeRoutingModule,
     MaterialModule,

@@ -11,17 +11,19 @@
           <!-- <div>
             <mat-icon>favorite</mat-icon>
           </div> -->
+          <!-- <div style="height: 300px;"> -->
+              <img
+                [routerLink]="[
+                      '/dashboard/products/details/',
+                      product._id
+                    ]"
+                mat-card-image
+                [src]="product.photos[0].url"
+                alt="Photo of a Shiba Inu"
+                style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px; cursor: pointer;"
+              />
+          <!-- </div> -->
 
-          <img
-          [routerLink]="[
-                '/dashboard/products/details/',
-                product._id
-              ]"
-          mat-card-image
-          [src]="product.photos[0].url"
-          alt="Photo of a Shiba Inu"
-          style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px; cursor: pointer;"
-        />
 
         <button class="favorite" mat-mini-fab aria-label="Example icon button with a home icon"  (click)="addProductToWishlsit(product._id)">
             <mat-icon>favorite</mat-icon>
@@ -49,7 +51,7 @@
 
         </mat-card-content>
         <mat-card-actions fxLayout="row wrap" style="margin-bottom: 10px !important;">
-          <button fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button >Añadir al carrito 	<mat-icon>add_shopping_cart</mat-icon></button>
+          <button fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button  (click)="addToCard(product._id)">Añadir al carrito 	<mat-icon>add_shopping_cart</mat-icon></button>
 
           <!-- <button fxFlex="100%" class="buttom-card" mat-raised-button style="margin: 10px 0 0 0;">Ver detalle del producto</button> -->
           <!-- <a ><mat-icon>visibility</mat-icon>Ver producto</a> -->

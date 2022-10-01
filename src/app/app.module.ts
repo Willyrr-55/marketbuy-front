@@ -34,7 +34,12 @@ registerLocaleData(localEs);
     NgxPermissionsModule.forRoot(),
     SharedModule,
     PagesModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    JwtModule.forRoot({config:{
+      tokenGetter:()=>{
+        return localStorage.getItem('x-access-token');
+      }
+    }})
   ],
   providers: [
     {

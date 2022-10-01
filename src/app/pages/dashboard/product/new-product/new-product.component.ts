@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { finalize } from 'rxjs';
 import { PhotoI } from 'src/app/interfaces/photo.interface';
-import { PhotoProductI, ProductI } from 'src/app/interfaces/product.interface';
+import { EditPro, PhotoProductI, ProductI } from 'src/app/interfaces/product.interface';
 import { AlertsService } from 'src/app/services/alerts.service';
 import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
@@ -29,7 +29,7 @@ export class NewProductComponent implements OnInit {
   previsualizacionImgUpdate: string
 
   productToEdit: ProductI;
-  product: ProductI
+  product: EditPro
   dimensiones:any={
     maxWidth:2500,
     minWidth:200,
@@ -182,20 +182,19 @@ export class NewProductComponent implements OnInit {
 
       const data = this.productForm.value;
       data.status = this.productToEdit.status
-
+      
       this.product = {
-        _id: this.productToEdit._id,
         name: data.name,
         description: data.description,
         price: data.price,
         stock: data.stock,
-        category: data.category,
-        brand: data.brand,
+        category: data.category._id,
+        brand: data.brand._id,
         status: data.status
       }
       console.log(this.product)
       await this.ngxSpinnerService.show('generalSpinner');
-      this.productService.editProduct(this.product).pipe(
+      this.productService.editPro(this.productToEdit._id, this.product).pipe(
         finalize(async()=>await this.ngxSpinnerService.hide('generalSpinner'))
       ).subscribe({
         next:(res)=>{
@@ -205,7 +204,7 @@ export class NewProductComponent implements OnInit {
           this.router.navigate(['/dashboard/options/products/all-products'],{replaceUrl:true})
         },
         error:(e)=>{
-          console.log(e.error)
+          console.log(e)
           this.alertsService.toastMixin(e['error']['message'],'error');
         }
       });

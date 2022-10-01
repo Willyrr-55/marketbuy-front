@@ -42,9 +42,8 @@ export class ProductService {
     return this.httpClient.post<ProductI>(`${baseurlapi}/createProduct`, productData)
   }
 
-  editProduct(product: ProductI){
-
-    return this.httpClient.post(`${baseurlapi}/update?id=${product._id}`,product)
+  editPro(id:string,data:ProductI){
+    return this.httpClient.put(`${baseurlapi}/updatePro?id=${id}`,data)
   }
 
   addPhoto(id:string,data:FormData){
@@ -59,4 +58,9 @@ export class ProductService {
     return this.httpClient.put(`${baseurlapi}/changeStatus?id=${id}&status=${status}`, '')
   }
   
+
+  registerorder(orderData: any){
+    return this.httpClient.post<ProductI>(`/order/createOrder`, orderData)
+  }
+
 }

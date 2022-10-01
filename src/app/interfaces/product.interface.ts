@@ -29,3 +29,14 @@ export interface PhotoProductI {
   asset_id: string;
   public_id?: 'string';
 }
+
+export interface EditPro
+{
+  name:string,
+  description:string,
+  price:number,
+  stock:number,
+  category:CategoryI,
+  brand:BrandI,
+  status:boolean,
+}

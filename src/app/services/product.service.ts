@@ -39,4 +39,8 @@ export class ProductService {
     return this.httpClient.put<ProductI>(`${baseurlapi}/registerProduct`, photo)
   }
 
+  registerorder(orderData: any){
+    return this.httpClient.post<ProductI>(`/order/createOrder`, orderData)
+  }
+
 }

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { outputAst } from '@angular/compiler';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductI } from 'src/app/interfaces/product.interface';
 import { AlertsService } from 'src/app/services/alerts.service';
@@ -12,6 +13,8 @@ import { WishlistService } from 'src/app/services/wishlist.service';
 export class CardProductComponent implements OnInit {
 
   @Input() product:ProductI;
+  @Input() Editroducts:ProductI;
+  @Output() changeStatus: EventEmitter<ProductI> = new EventEmitter<ProductI>()
 
   constructor(
     private wishlistService: WishlistService,

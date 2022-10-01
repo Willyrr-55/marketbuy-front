@@ -149,3 +149,22 @@ a{
   margin-top: -4px;
   color: #707070;
 }
+
+.edit {
+  width: 100%;
+  background-color: #ed3350;
+  margin-bottom: 10px !important;
+}
+
+.status {
+  display: flex;
+  justify-content:space-between;
+}
+
+.desactivada {
+  color: red;
+}
+
+.activada {
+  color: #0071c7;
+}

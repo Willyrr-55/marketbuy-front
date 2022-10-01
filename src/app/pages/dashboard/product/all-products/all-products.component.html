@@ -2,6 +2,83 @@
     <h3>Todos los Producto</h3>
 </div>
 
+<mat-accordion class="example-headers-align" multi>
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+    </mat-panel-title>
+    <mat-panel-description>
+        Filtrar categorias
+    </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div>
+    <div class="form"   style=" margin-top: 10px;">
+        <div class="form-container">
+
+       <div class="filter-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Por stcok</mat-label>
+                <mat-select  [(ngModel)]="labelStock" >
+                    <mat-option  value="1">En stock </mat-option>
+                    <mat-option  value="0">Sin stock </mat-option>
+                    <mat-option  value="">Todas </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Por Estado</mat-label>
+                <mat-select [(ngModel)]="labelStatus">
+                    <mat-option value="true">Activa </mat-option>
+                    <mat-option  value="false">Desactiva</mat-option>
+                    <mat-option  value="">Todas </mat-option>
+                </mat-select>
+            </mat-form-field>
+       </div>
+
+       <div class="filter-container">
+        <app-select-category
+             style="width: 100%;"       
+            [categorySelected]="idCategory"
+            (changeCategory)="setCategory($event)"
+        >
+        </app-select-category>
+
+        <app-select-brand
+            style="width: 100%;" 
+            [brandSelected]="idBrand"
+            (changeBrand)="setBrand($event)"
+        >
+        </app-select-brand>
+       </div>
+
+        <div style="margin-bottom: 15px; margin-top: 15px">      
+            <mat-radio-group  [(ngModel)]="labelStrign" >
+            <mat-radio-button class="example-margin" (click)="limpiarForm()" mat-accent value="name">Nombre</mat-radio-button>
+            <mat-radio-button class="example-margin" (click)="limpiarForm()" value="id">Id</mat-radio-button>
+            </mat-radio-group>
+
+            <form [formGroup]="filterForm" (ngSubmit)="getProducts()">
+            <input *ngIf="labelStrign == 'name'" formControlName="name" type="text" placeholder="Nombre de la categoria">   
+            <input *ngIf="labelStrign == 'id'" formControlName="_id" type="text" placeholder="Id de el producto">   
+            <div  fxLayout="column" class="button-container">
+                <button class="btn-danger btn-filter" type="submit">Filtrar</button>
+                <button class="btn-danger btn-filter" type="button" (click)="resetFilter()">Quitar Filtros</button>
+            </div>
+            </form>
+
+        </div>
+
+        
+
+        </div>
+    </div>
+    </div>
+
+</mat-expansion-panel>
+</mat-accordion>
+    
+
 <div class="container-for-dashboard ">
             <!-- PRODUCTS CARDS -->
         <div
@@ -18,11 +95,11 @@
         fxFlex.sm="30%"
         fxFlex.md="25%"
         fxFlex.lg="20%"
-        *ngFor="let product of products"
+        *ngFor="let productE of Editroducts"
         >
         <!-- <app-product [product]="product"></app-product>
             <br><br> -->
-        <app-card-product [product]="product"></app-card-product>
+        <app-card-product [Editroducts]="productE" [product]="productE" (changeStatus)="changeStatusProduct($event)"></app-card-product>
         </div>
     </div>
 </div>

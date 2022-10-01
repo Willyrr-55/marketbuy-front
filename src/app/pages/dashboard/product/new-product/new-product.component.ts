@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { finalize } from 'rxjs';
-import { ProductI } from 'src/app/interfaces/product.interface';
+import { PhotoI } from 'src/app/interfaces/photo.interface';
+import { PhotoProductI, ProductI } from 'src/app/interfaces/product.interface';
 import { AlertsService } from 'src/app/services/alerts.service';
 import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
@@ -15,6 +16,7 @@ import Swal from 'sweetalert2';
 })
 export class NewProductComponent implements OnInit {
   labelPosition: 'false' | 'true' = 'true';
+  loading: boolean = true
     
   productFormcreate: boolean = false
   productForm:FormGroup;
@@ -27,6 +29,7 @@ export class NewProductComponent implements OnInit {
   previsualizacionImgUpdate: string
 
   productToEdit: ProductI;
+  product: ProductI
   dimensiones:any={
     maxWidth:2500,
     minWidth:200,
@@ -46,9 +49,12 @@ export class NewProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.productToEdit = history.state?.category;
+    this.productToEdit = history.state?.product;
+    console.log(this.productToEdit)
     if(this.productToEdit){
-      this.setEditCategory();
+      console.log(this.productToEdit.photos.length)
+      this.setEditProduct();
+      this.loading = false
     }
   }
 
@@ -96,13 +102,14 @@ export class NewProductComponent implements OnInit {
       _id:['',[Validators.required]],
       name:['',[Validators.required]],
       description:['',[Validators.required]],
-      price:[0,[Validators.required]],
-      stock:[0,[Validators.required]],
+      price:[null,[Validators.required]],
+      stock:[null,[Validators.required]],
       category:['',[Validators.required]],
       brand:['',[Validators.required]],
       status:[true,[Validators.required]]
     });
     this.changes.detectChanges()
+    this.loading = false
     console.log('form creado', this.productForm.value)
 
     this.productForm.get('_id').disable();
@@ -169,13 +176,14 @@ export class NewProductComponent implements OnInit {
 
 
   async editProduct(){
+    console.log('edit---------')
     this.formSubmited = true;
     if(this.productForm.valid){
 
       const data = this.productForm.value;
       data.status = this.productToEdit.status
 
-      this.productToEdit = {
+      this.product = {
         _id: this.productToEdit._id,
         name: data.name,
         description: data.description,
@@ -185,28 +193,30 @@ export class NewProductComponent implements OnInit {
         brand: data.brand,
         status: data.status
       }
-
+      console.log(this.product)
       await this.ngxSpinnerService.show('generalSpinner');
-      this.productService.editProduct(this.productToEdit).pipe(
+      this.productService.editProduct(this.product).pipe(
         finalize(async()=>await this.ngxSpinnerService.hide('generalSpinner'))
       ).subscribe({
         next:(res)=>{
           this.alertsService.toastMixin(res['message'],'success');
           this.productForm.reset();
           this.formSubmited = false;
-          this.router.navigate(['/dashboard/options/category/all-category'],{replaceUrl:true})
+          this.router.navigate(['/dashboard/options/products/all-products'],{replaceUrl:true})
         },
         error:(e)=>{
+          console.log(e.error)
           this.alertsService.toastMixin(e['error']['message'],'error');
         }
       });
     }
   }
 
-  setEditCategory(){
+  setEditProduct(){
     this.productForm.get('_id').enable();
     this.productForm.get('status').disable();
-
+    this.idBrand = this.productToEdit.brand._id
+    this.idCategory = this.productToEdit.category._id
     this.productForm.patchValue(this.productToEdit);
   }
 
@@ -232,7 +242,7 @@ export class NewProductComponent implements OnInit {
           confirmButtonText:'Continuar'
         });
 
-        const {result} = await this.alertsService.confirmDialogWithModals('Info.','¿Desea actualizar la imagen de la categoria?','question');
+        const {result} = await this.alertsService.confirmDialogWithModals('Info.','¿Desea agregar la imagen al producto?','question');
 
       if(result.isConfirmed){
 
@@ -241,13 +251,14 @@ export class NewProductComponent implements OnInit {
         const formData = new FormData();
         formData.append('files',file);
 
-        this.productService.uploadPhoto(this.productToEdit._id,formData).pipe(
+        this.productService.addPhoto(this.productToEdit._id,formData).pipe(
           finalize(async()=>{
             await this.ngxSpinnerService.hide('generalSpinner');
           })
         ).subscribe({
           next:(res:any)=>{
-            this.productToEdit.photos[0] = res.photo;
+            console.log(res)
+            this.productToEdit.photos = res.product.photos;
             this.alertsService.toastMixin(res.message,'success');
           },
           error:(e:any)=>{
@@ -260,4 +271,35 @@ export class NewProductComponent implements OnInit {
     }
   }
 
+  async deletePhoto(photo: PhotoProductI){
+    await Swal.fire({
+      title:'Previsualización de la imagen',
+      imageUrl: photo.url,
+      imageAlt:'Previsualización de la imagen',
+      confirmButtonText:'Continuar'
+    });
+
+    const {result} = await this.alertsService.confirmDialogWithModals('Info.','¿Desea Eliminar la imagen de el producto?','question');
+
+  if(result.isConfirmed){
+
+    await this.ngxSpinnerService.show('generalSpinner');
+
+
+    this.productService.deletePhoto(this.productToEdit._id,photo).pipe(
+      finalize(async()=>{
+        await this.ngxSpinnerService.hide('generalSpinner');
+      })
+    ).subscribe({
+      next:(res:any)=>{
+        console.log(res)
+        this.productToEdit.photos = res.product.photos;
+        this.alertsService.toastMixin(res.message,'success');
+      },
+      error:(e:any)=>{
+        this.alertsService.toastMixin(e.error.message,'error');
+      }
+    });
+  }
+  }
 }

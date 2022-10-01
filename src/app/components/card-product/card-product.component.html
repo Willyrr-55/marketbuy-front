@@ -18,7 +18,7 @@
                 product._id
               ]"
           mat-card-image
-          [src]="product.photos[0].url"
+          [src]="product.photos[0]?.url"
           alt="Photo of a Shiba Inu"
           style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px; cursor: pointer;"
         />
@@ -28,7 +28,10 @@
           </button>
         <mat-card-content>
 
-          <mat-card-subtitle style="cursor: pointer;">{{product.category.name}}</mat-card-subtitle>
+          <div class="status">
+            <mat-card-subtitle style="cursor: pointer;">{{product.category.name}}</mat-card-subtitle>
+            <span  *ngIf="Editroducts" style="cursor: pointer;" [ngClass]="product.status?'activada':'desactivada'">{{product.status?'Activado':'Desactivado'}} </span>
+          </div>
           <mat-card-title style="cursor: pointer;" [routerLink]="[
                 '/dashboard/products/details/',
                 product._id
@@ -48,12 +51,10 @@
 
 
         </mat-card-content>
-        <mat-card-actions fxLayout="row wrap" style="margin-bottom: 10px !important;">
-          <button fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button >Añadir al carrito 	<mat-icon>add_shopping_cart</mat-icon></button>
-
-          <!-- <button fxFlex="100%" class="buttom-card" mat-raised-button style="margin: 10px 0 0 0;">Ver detalle del producto</button> -->
-          <!-- <a ><mat-icon>visibility</mat-icon>Ver producto</a> -->
-
+        <mat-card-actions  fxLayout="row wrap" style="margin-bottom: 10px !important;">
+          <button *ngIf="!Editroducts" fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button >Añadir al carrito <mat-icon>add_shopping_cart</mat-icon></button>
+          <button *ngIf="Editroducts"  class="buttom-card add-to-cart edit" mat-raised-button [routerLink]="['/dashboard/options/products/edit-product']" [state]="{product}">Editar	</button>
+          <button *ngIf="Editroducts"  class="buttom-card add-to-cart edit" mat-raised-button (click)="changeStatus.emit(product)">{{product.status?'Desactivar':'Activar'}} </button>
         </mat-card-actions>
 
         <!-- <div class="button">

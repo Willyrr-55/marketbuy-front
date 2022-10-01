@@ -85,7 +85,31 @@ button:hover {
   margin: 0 10px;
 }
 
-  
+.imgs-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px
+}
+
+.imgs {
+  position: relative;
+  max-width: 250px;
+}
+
+.imgs-container img{
+  width: 100%;
+}
+
+.delete-img {
+  position: absolute;
+  top: 0px;
+  right: 11px;
+  cursor: pointer;
+}
+.material-icons {
+  font-size: 28px !important;
+  font-weight: 900 !important;
+}
 // @media (min-width: 559px){
 //     .input-container {
 //         padding: 20px 0 0 0;

@@ -2,16 +2,17 @@
     <h3>{{productToEdit?'Editar':'Nuevo'}} Producto</h3>
 </div>
 
-<div class="container-for-dashboard ">
+<div class="container-for-dashboard " *ngIf="!loading">
   <form  [formGroup]="productForm" (ngSubmit)="productToEdit?editProduct():registerProduct()" >
         <div fxLayout="column" >
             <div fxFlex="40"> 
                 <div class="column">
                     <label for="">Imagenes de el producto</label>
-                    <span>Puede ingresar hasta 5 imagenes.</span>
+                    <span *ngIf="!productToEdit">Puede ingresar hasta 5 imagenes.</span>
                 </div>
                 <div>
                     <app-upload-files
+                    *ngIf="!productToEdit"
                         [class]="
                         formSubmited && photos.length == 0 && !productToEdit
                             ? 'is-invalid'
@@ -22,6 +23,15 @@
                         [files]="photos"
                         (multipleImages)="photos = $event">
                     </app-upload-files>
+                    <div *ngIf="productToEdit" class=" d-flex flex-column">
+                       <div class="imgs-container">
+                        <div *ngFor="let photo of productToEdit.photos" class="imgs">
+                            <img style="height: 73%;object-fit: contain"  [src]="photo.url" alt="">
+                            <a type="button" class="delete-img" (click)="deletePhoto(photo)"><mat-icon>clear</mat-icon></a>
+                          </div>
+                       </div>
+                       <button type="button" *ngIf="productToEdit.photos.length < 5" (click)="changePhoto()" style="width: 100%;">Agregar imagen</button>
+                    </div>
                     <div
                         *ngIf="formSubmited && photos.length == 0 && !productToEdit"
                         class="invalid-feedback"
@@ -36,12 +46,10 @@
                     <div *ngIf="formSubmited && productForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
                     <div class="row">
                         <div class="row-element mr">
-                            <label for="">Precio</label>
                             <input [class]="formSubmited && productForm.get('name').invalid?'is-invalid':''" formControlName="price" type="number" placeholder="Precio">   
                             <div *ngIf="formSubmited && productForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
                         </div>
                         <div class="row-element ml">
-                            <label for="">Stock</label>
                             <input [class]="formSubmited && productForm.get('name').invalid?'is-invalid':''" formControlName="stock" type="number" placeholder="Stock">   
                              <div *ngIf="formSubmited && productForm.get('name').invalid" class="invalid-feedback">{{getErrorMessageName()}}</div>
                         </div>
@@ -84,6 +92,7 @@
                         <mat-radio-button class="example-margin" mat-accent value="true">Activar</mat-radio-button>
                         <mat-radio-button class="example-margin"  value="false">Desactivar</mat-radio-button>
                 </mat-radio-group>
+                
             </div>
             <small style="margin-top: 10px; margin-left: 10px">Desactive si el producto no está en uso.</small>
             <div *ngIf="formSubmited && productForm.get('status').invalid" class="invalid-feedback">

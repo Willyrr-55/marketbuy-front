@@ -12,6 +12,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -30,7 +31,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCheckboxModule,
     MatRadioModule,
     MatInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MaterialModule,
+    MatExpansionModule
   ]
 })
 export class ProductModule { }

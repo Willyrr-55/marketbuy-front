@@ -3,3 +3,4 @@ export interface PhotoI {
   public_id:string,
   url:string
 }
+

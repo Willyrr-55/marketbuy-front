@@ -4,16 +4,17 @@ import { CanActivate,Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class EditBrandGuard implements CanActivate {
+export class EditProductGuard implements CanActivate {
 
   constructor(private router: Router){}
 
   canActivate(): boolean {
     const state:any = this.router.getCurrentNavigation().extras.state;
-    if(state?.brand){
+    console.log(state)
+    if(state?.product){
       return true;
     }else{
-      this.router.navigateByUrl('/dashboard/options/brands/all-brands');
+      this.router.navigateByUrl('/dashboard/options/products/all-products');
       return false;
     }
   }

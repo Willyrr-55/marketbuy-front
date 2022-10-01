@@ -141,7 +141,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions fxLayout="row wrap" >
-          <button fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button routerLink="/dashboard/category/edit-category"  [state]="{category}">Editar</button>
+          <button fxFlex="100%" class="buttom-card add-to-cart" mat-raised-button routerLink="/dashboard/options/category/edit-category"  [state]="{category}">Editar</button>
 
           <button fxFlex="100%" class="buttom-card" mat-raised-button style="margin: 10px 0 0 0;" (click)="changeStatusCategory(category._id,category.status)">{{category.status?'Desactivar':'Activar'}}</button>
 

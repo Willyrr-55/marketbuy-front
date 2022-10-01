@@ -62,6 +62,14 @@ export class AuthService {
     this.router.navigateByUrl('/')
   }
 
+  getToken() {
+    return localStorage.getItem('x-access-token');
+  }
+
+  refreshToken() {
+    return this.httpClient.get(`${url_api}/renew`, { headers: { 'authorization': `Bearer ${localStorage.getItem('x-access-token')}` } })
+      .pipe(tap((token) => { localStorage.setItem('x-access-token', token['token']) }))
+  }
 
 
   setRoles(token) {

@@ -15,8 +15,8 @@ export class ProductService {
     private httpClient: HttpClient
   ) { }
 
-  searchProducts(search:string,filters:any,page?:number){
-    return this.httpClient.get<any>(`${baseurlapi}/searchProducts`,{params:{search,page,filters:JSON.stringify(filters)}});
+  searchProducts(filters:any){
+    return this.httpClient.get<any>(`${baseurlapi}/filterProducts`,{params:{...filters}});
   }
 
   getProducts(){

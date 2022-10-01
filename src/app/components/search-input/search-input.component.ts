@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AutocompleteComponent } from 'angular-ng-autocomplete';
 import { ProductI } from 'src/app/interfaces/product.interface';
@@ -9,30 +9,28 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss']
 })
-export class SearchInputComponent implements OnInit, AfterViewInit {
+export class SearchInputComponent implements AfterViewInit{
   @ViewChild('searchInputComponent',{static:true}) searchInputComponent:AutocompleteComponent;
 
   @Input()classes:string[]=[];
   @Input()placeholder:string ='';
-
-  products:ProductI[] =[];
-  inputSearch:HTMLElement;
   keyboard:string = 'name';
 
-  customFilter = function(products: any[], query: string): any[] {
-    return products.filter(x => x.name.toLowerCase().includes(query.toLowerCase()) || x.tags.includes(query.toLowerCase()) || x.category.name?.toLowerCase().includes(query.toLowerCase()));
+  products:ProductI[] =[];
+
+  inputSearch:HTMLElement;
+
+  searchInput:any;
+
+  customFilter = function(products:ProductI[],query:any){
+    return products.filter((p)=>p.name.toLowerCase().includes(query?.toLowerCase()))
   };
 
-  searchInput:string;
-
   constructor(
-    private router: Router,
     private productService: ProductService,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private router: Router
   ) { }
-
-  ngOnInit(): void {
-  }
 
   ngAfterViewInit(){
     this.inputSearch = document.querySelector('.ng-autocomplete .autocomplete-container');
@@ -41,12 +39,18 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
   selected(ev:any){
     if(ev){
       this.inputSearch.classList.add('input-value');
-      this.router.navigateByUrl(`/dashboard/products/details/${ev.idProduct}`);
+      this.router.navigateByUrl(`/products/details/${ev._id}`);
     }
   }
 
   search(){
-    this.router.navigateByUrl(`/dashboard/products/list/${this.searchInput}`);
+    if(typeof this.searchInput == 'object'){
+      this.inputSearch.classList.add('input-value');
+      this.router.navigateByUrl(`/products/details/${this.searchInput._id}`);
+    }else{
+      this.router.navigateByUrl(`/products/list/${this.searchInput}`);
+      this.searchInputComponent.close();
+    }
   }
 
   changeValue(value:string){
@@ -55,15 +59,15 @@ export class SearchInputComponent implements OnInit, AfterViewInit {
       return this.inputSearch.classList.add('input-value');
     }
     this.inputSearch.classList.remove('input-value');
+
   }
 
   getProducts(search:string){
-    this.productService.searchProducts(search,[]).subscribe({
+    this.productService.searchProducts({name:search}).subscribe({
       next:(res:any)=>{
-        this.products = res.products;
+        this.products = res;
         this.changeDetectorRef.detectChanges();
       }
     })
   }
-
 }
